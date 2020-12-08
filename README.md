@@ -1,3 +1,5 @@
 # tfe
 
-Create an image folder in the root repository to add images in the database
+## Usage
+Add a folder of images in the database
+`python3 add_images.py --path <folder> [--extractor <algorithm>]`
