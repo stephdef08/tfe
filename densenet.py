@@ -1,6 +1,7 @@
 import torchvision.models as models
 import torch
 import torch.nn as nn
+import utils
 
 class Model(nn.Module):
     def __init__(self):
@@ -9,4 +10,6 @@ class Model(nn.Module):
         self.model.eval()
 
     def forward(self, input):
-        return self.model(input)
+        tensor = self.model(input).cpu()
+        bin = utils.binarize(tensor)
+        return bin

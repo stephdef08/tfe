@@ -2,9 +2,11 @@ import redis
 import os
 from argparse import ArgumentParser, ArgumentTypeError
 from PIL import Image
-from torchvision import transforms
 import torch
+from torchvision import transforms
 import densenet
+import numpy as np
+import json
 
 if __name__ == "__main__":
     usage = "python3 add_images.py --path <folder> [--extractor <algorithm>]"
@@ -31,7 +33,7 @@ if __name__ == "__main__":
     if args.path[-1] != '/':
         print("The path mentionned is not a folder")
         exit()
-        
+
     model = None
 
     if args.extractor == 'densenet':
@@ -43,18 +45,43 @@ if __name__ == "__main__":
 
     r = redis.Redis(host='localhost', port='6379', db=0)
 
-    transform = transforms.Compose([
-        transforms.Resize(224),
-        transforms.ToTensor(),
+    transform = torch.nn.Sequential(
         transforms.Normalize(
             mean=[0.485, 0.456, 0.406],
             std=[0.229, 0.224, 0.225]
         )
-    ])
+    )
+
+    max_tensor_size = 16
+
+    tensor_cpu = torch.zeros(max_tensor_size, 3, 224, 224)
+    tensor_gpu = torch.zeros(max_tensor_size, 3, 224, 224, device='cuda:0')
+    name_list = []
+    i = 0
 
     for subdir, dirs, files in os.walk(args.path):
         for file in files:
-            img = Image.open(os.path.join(subdir, file)).convert('RGB')
-            img_t = transform(img).cuda()
-            batch = torch.unsqueeze(img_t, 0)
-            out = model(batch)
+            #print(i)
+            name_list.append(os.path.join(subdir, file))
+            img = Image.open(name_list[i]).convert('RGB')
+            img = transforms.Resize((224, 224))(img)
+            tensor_cpu[i] = transforms.ToTensor()(img)
+
+            if i < max_tensor_size - 1:
+                i += 1
+            else:
+                tensor_gpu = transform(tensor_cpu).to(device='cuda:0')
+                out = model(tensor_gpu)
+                for j in range(max_tensor_size):
+                    r.lpush(np.array2string(out[j]),
+                            json.dumps({"name": name_list[j]}))
+                name_list.clear()
+                i = 0
+            #print(json.loads(r.lrange(np.array2string(out), 0, 0)[0].decode("utf-8"))["name"])
+
+    if i != 0:
+        tensor_gpu = transform(tensor_cpu).to(device='cuda:0')
+        out = model(tensor_gpu)
+        for j in range(i):
+            r.lpush(np.array2string(out[j]),
+                    json.dumps({"name": name_list[j]}))
