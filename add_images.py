@@ -2,6 +2,7 @@ import redis
 import os
 from argparse import ArgumentParser, ArgumentTypeError
 from PIL import Image
+import cv2
 import torch
 from torchvision import transforms
 import densenet
@@ -61,7 +62,6 @@ if __name__ == "__main__":
 
     for subdir, dirs, files in os.walk(args.path):
         for file in files:
-            #print(i)
             name_list.append(os.path.join(subdir, file))
             img = Image.open(name_list[i]).convert('RGB')
             img = transforms.Resize((224, 224))(img)
@@ -70,7 +70,8 @@ if __name__ == "__main__":
             if i < max_tensor_size - 1:
                 i += 1
             else:
-                tensor_gpu = transform(tensor_cpu).to(device='cuda:0')
+                #make transformation on gpu -> maybe faster
+                tensor_gpu = transform(tensor_cpu.to(device='cuda:0'))
                 out = model(tensor_gpu)
                 for j in range(max_tensor_size):
                     r.lpush(np.array2string(out[j]),
