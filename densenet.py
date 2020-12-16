@@ -10,6 +10,6 @@ class Model(nn.Module):
         self.model.eval()
 
     def forward(self, input):
-        tensor = self.model(input).cpu()
+        tensor = self.model(input).to(device='cpu')
         bin = utils.binarize(tensor)
         return bin

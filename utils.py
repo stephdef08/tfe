@@ -1,11 +1,9 @@
-import torch
 import numpy as np
 import cv2
-import torch
 from PIL import Image
 import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans
-from sklearn.model_selection import train_test_split
+import KMeansRex
+from time import time
 
 #Replace with something more efficient
 def binarize(tensor):
@@ -22,7 +20,7 @@ def extract_patches(path):
     img = cv2.imread(path)
     img = cv2.resize(img, (1000, 1000))
 
-    hist_list = np.zeros((16, 256))
+    hist_list = np.zeros((16, 256), dtype=np.float64)
     b, g, r = cv2.split(img)
 
     for j in range(4):
@@ -34,23 +32,31 @@ def extract_patches(path):
             hist_list[j*4+i, :] += np.reshape(cv2.calcHist([r[j*250:(j+1)*250-1, i*250:(i+1)*250-1]],
                                                          [0], None, [256], [0,256]), 256)
 
-    kmeans = KMeans(n_clusters=4, random_state=0).fit(hist_list)
+    centroids, assignements = KMeansRex.RunKMeans(hist_list, 4, initname=b"random")
+    assignements = np.array(assignements, dtype=np.int32).reshape(16)
 
     label_list = [[], [], [], []]
     label_list_indices = [[], [], [], []]
 
     for j in range(4):
         for i in range(4):
-            label_list[kmeans.labels_[j*4+i]].append(hist_list[j*4+i])
-            label_list_indices[kmeans.labels_[j*4+i]].append((j, i))
+            label_list[assignements[j*4+i]].append(hist_list[j*4+i])
+            label_list_indices[assignements[j*4+i]].append((j, i))
 
     mosaic = []
     for i in range(4):
-        nbr_clusters = int(.25 * len(label_list[i]))
-        nbr_clusters = nbr_clusters if nbr_clusters > 0 else 1
-        kmeans = KMeans(nbr_clusters, random_state=0).fit(label_list[i])
-        for j in range(len(label_list[i])):
-            if kmeans.labels_[j] == 0:
+        nbr_clusters = int(.5 * len(label_list[i]))
+
+        if nbr_clusters > 1:
+            centroids, assignements = KMeansRex.RunKMeans(np.array(label_list[i],
+                                                                   dtype=np.float64),
+                                                          nbr_clusters,
+                                                          initname=b"random")
+            for j in range(len(label_list[i])):
+                if assignements[j] == 0:
+                    mosaic.append(label_list_indices[i][j])
+        else:
+            for j in range(len(label_list[i])):
                 mosaic.append(label_list_indices[i][j])
 
     for i in range(len(mosaic)):
@@ -65,3 +71,7 @@ def extract_patches(path):
         mosaic[i] = Image.fromarray(mosaic[i])
 
     return mosaic
+
+if __name__ == "__main__":
+    for i in range(10):
+        extract_patches("/home/stephan/Pictures/slice.png")

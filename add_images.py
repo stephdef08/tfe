@@ -2,12 +2,12 @@ import redis
 import os
 from argparse import ArgumentParser, ArgumentTypeError
 from PIL import Image
-import cv2
 import torch
 from torchvision import transforms
 import densenet
 import numpy as np
 import json
+import utils
 
 if __name__ == "__main__":
     usage = "python3 add_images.py --path <folder> [--extractor <algorithm>]"
@@ -62,23 +62,22 @@ if __name__ == "__main__":
 
     for subdir, dirs, files in os.walk(args.path):
         for file in files:
-            name_list.append(os.path.join(subdir, file))
-            img = Image.open(name_list[i]).convert('RGB')
-            img = transforms.Resize((224, 224))(img)
-            tensor_cpu[i] = transforms.ToTensor()(img)
 
-            if i < max_tensor_size - 1:
+            mosaic = utils.extract_patches(os.path.join(subdir, file))
+            for j in range(len(mosaic)):
+                name_list.append(os.path.join(subdir, file))
+                img = transforms.Resize((224, 224))(mosaic[j])
+                tensor_cpu[i] = transforms.ToTensor()(img)
                 i += 1
-            else:
-                #make transformation on gpu -> maybe faster
-                tensor_gpu = transform(tensor_cpu.to(device='cuda:0'))
-                out = model(tensor_gpu)
-                for j in range(max_tensor_size):
-                    r.lpush(np.array2string(out[j]),
-                            json.dumps({"name": name_list[j]}))
-                name_list.clear()
-                i = 0
-            #print(json.loads(r.lrange(np.array2string(out), 0, 0)[0].decode("utf-8"))["name"])
+
+                if i == max_tensor_size:
+                    tensor_gpu = transform(tensor_cpu.to(device='cuda:0'))
+                    out = model(tensor_gpu)
+                    for k in range(max_tensor_size):
+                        r.lpush(np.array2string(out[k]),
+                                json.dumps({"name": name_list[k]}))
+                    name_list.clear()
+                    i = 0
 
     if i != 0:
         tensor_gpu = transform(tensor_cpu).to(device='cuda:0')
