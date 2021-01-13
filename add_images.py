@@ -53,7 +53,7 @@ if __name__ == "__main__":
         )
     )
 
-    max_tensor_size = 16
+    max_tensor_size = 32
 
     tensor_cpu = torch.zeros(max_tensor_size, 3, 224, 224)
     tensor_gpu = torch.zeros(max_tensor_size, 3, 224, 224, device='cuda:0')
@@ -62,8 +62,8 @@ if __name__ == "__main__":
 
     for subdir, dirs, files in os.walk(args.path):
         for file in files:
-
-            mosaic = utils.extract_patches(os.path.join(subdir, file))
+            img = cv2.imread(os.path.join(subdir, file))
+            mosaic = utils.extract_patches(img)
             for j in range(len(mosaic)):
                 name_list.append(os.path.join(subdir, file))
                 img = transforms.Resize((224, 224))(mosaic[j])

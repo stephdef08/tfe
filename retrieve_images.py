@@ -50,12 +50,13 @@ if __name__ == "__main__":
         )
     )
 
-    mosaic = utils.extract_patches(args.path)
+    img = cv2.imread(args.path)
+    mosaic = utils.extract_patches(img)
 
-    max_tensor_size = 16
+    max_tensor_size = 32
 
     tensor_cpu = torch.zeros(max_tensor_size, 3, 224, 224)
-    tensor_gpu = torch.zeros(max_tensor_size, 3, 224, 224)
+    tensor_gpu = torch.zeros(max_tensor_size, 3, 224, 224, device='cuda:0')
     i = 0
 
     counter = Counter()
@@ -71,9 +72,9 @@ if __name__ == "__main__":
             for k in range(max_tensor_size):
                 names = r.lrange(np.array2string(out[k]), 0, -1)
 
-                if r.lrange(np.array2string(out[k]), 0, -1) != []:
-                    for l in range(len(names)):
-                        counter[json.loads(names[l].decode("utf-8"))["name"]] += 1
+                for l in range(len(names)):
+                    counter[json.loads(names[l].decode("utf-8"))["name"]] += 1
+            i = 0
 
     if i != 0:
         tensor_gpu = transform(tensor_cpu.to(device='cuda:0'))
@@ -81,8 +82,7 @@ if __name__ == "__main__":
         for j in range(i):
             names = r.lrange(np.array2string(out[j]), 0, -1)
 
-            if r.lrange(np.array2string(out[j]), 0, -1) != []:
-                for k in range(len(names)):
-                    counter[json.loads(names[k].decode("utf-8"))["name"]] += 1
+            for k in range(len(names)):
+                counter[json.loads(names[k].decode("utf-8"))["name"]] += 1
 
     print(counter)

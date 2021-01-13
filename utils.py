@@ -1,23 +1,16 @@
 import numpy as np
 import cv2
 from PIL import Image
-import matplotlib.pyplot as plt
 import KMeansRex
-from time import time
 
 #Replace with something more efficient
 def binarize(tensor):
     binary_rep = np.zeros((tensor.shape[0], tensor.shape[1]))
-    row = binary_rep.shape[0]
-    col = binary_rep.shape[1]
-    for y in range(row):
-        for i in range(col):
-            binary_rep[y][i] = 0 if tensor[y][i] < .5 else 1
-
+    binary_rep[tensor > .5] = 1
+    binary_rep[tensor <= .5] = 0
     return binary_rep
 
-def extract_patches(path):
-    img = cv2.imread(path)
+def extract_patches(img):
     img = cv2.resize(img, (1000, 1000))
 
     hist_list = np.zeros((16, 256), dtype=np.float64)
@@ -74,4 +67,5 @@ def extract_patches(path):
 
 if __name__ == "__main__":
     for i in range(10):
-        extract_patches("/home/stephan/Pictures/slice.png")
+        img = cv2.imread("/home/stephan/Downloads/waffle.png")
+        extract_patches(img)
