@@ -1,0 +1,4 @@
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_CUDA=ON -D ENABLE_FAST_MATH=1 -D CUDA_FAST_MATH=1 -D WITH_CUBLAS=1 -DWITH_OPENMP=ON -D INSTALL_PYTHON_EXAMPLES=ON -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.5.1/modules -D PYTHON_EXECUTABLE=$python_exec -D PYTHON_DEFAULT_EXECUTABLE=$default_exec -D PYTHON_INCLUDE_DIR=$include_dir -D PYTHON_LIBRARY=$library -D BUILD_EXAMPLES=ON ..
+
+cuda.hpp -> opencv-4.5.1/modules/core/include/opencv2/core/cuda.hpp
+gpu_mat.cu -> opencv-4.5.1/modules/core/src/cuda/gpu_mat.cu

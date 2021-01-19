@@ -8,6 +8,33 @@ import densenet
 import numpy as np
 import json
 import utils
+import cv2
+from joblib import Parallel, delayed
+import multiprocessing
+
+def extract_patches(subdir, file, extractor):
+    img = cv2.imread(os.path.join(subdir, file))
+    mosaic = extractor.extract_patches(img)
+    return (mosaic, os.path.join(subdir, file))
+
+def add_redis(tensor_cpu, tensor_gpu, model, counter, r, results, name_list, max_tensor_size, transform):
+    for res in results:
+        mosaic, name = res
+        for j in range(len(mosaic)):
+            name_list.append(name)
+            img = transforms.Resize((224, 224))(mosaic[j])
+            tensor_cpu[counter] = transforms.ToTensor()(img)
+            counter += 1
+
+            if counter == max_tensor_size:
+                tensor_gpu = transform(tensor_cpu.to(device='cuda:0'))
+                out = model(tensor_gpu)
+                for k in range(max_tensor_size):
+                    r.lpush(np.array2string(out[k]),
+                            json.dumps({"name": name_list[k]}))
+                name_list.clear()
+                counter = 0
+    return counter
 
 if __name__ == "__main__":
     usage = "python3 add_images.py --path <folder> [--extractor <algorithm>]"
@@ -58,30 +85,34 @@ if __name__ == "__main__":
     tensor_cpu = torch.zeros(max_tensor_size, 3, 224, 224)
     tensor_gpu = torch.zeros(max_tensor_size, 3, 224, 224, device='cuda:0')
     name_list = []
-    i = 0
+    counter = 0
 
-    for subdir, dirs, files in os.walk(args.path):
-        for file in files:
-            img = cv2.imread(os.path.join(subdir, file))
-            mosaic = utils.extract_patches(img)
-            for j in range(len(mosaic)):
-                name_list.append(os.path.join(subdir, file))
-                img = transforms.Resize((224, 224))(mosaic[j])
-                tensor_cpu[i] = transforms.ToTensor()(img)
-                i += 1
+    extractor = [utils.Extract()] * max_tensor_size
 
-                if i == max_tensor_size:
-                    tensor_gpu = transform(tensor_cpu.to(device='cuda:0'))
-                    out = model(tensor_gpu)
-                    for k in range(max_tensor_size):
-                        r.lpush(np.array2string(out[k]),
-                                json.dumps({"name": name_list[k]}))
-                    name_list.clear()
-                    i = 0
+    num_cores = multiprocessing.cpu_count()
+    with Parallel(n_jobs=num_cores, prefer="threads") as parallel:
+        for subdir, dirs, files in os.walk(args.path):
+            nbr_iter = len(files) // max_tensor_size
+            sub = [subdir] * max_tensor_size
 
-    if i != 0:
-        tensor_gpu = transform(tensor_cpu).to(device='cuda:0')
-        out = model(tensor_gpu)
-        for j in range(i):
-            r.lpush(np.array2string(out[j]),
-                    json.dumps({"name": name_list[j]}))
+            for i in range(nbr_iter):
+                result = parallel(delayed(extract_patches)(s, f, e)
+                                  for s, f, e in zip(sub, files[max_tensor_size * i: max_tensor_size * (i+1)], extractor))
+                counter = add_redis(tensor_cpu, tensor_gpu, model, counter, r,
+                                    result, name_list, max_tensor_size, transform)
+
+            rest = len(files) % max_tensor_size
+
+            if rest != 0:
+                sub = [subdir] * rest
+                result = parallel(delayed(extract_patches)(s, f, e)
+                                  for s, f, e in zip(sub, files[max_tensor_size * nbr_iter:], extractor[:rest+1]))
+                counter = add_redis(tensor_cpu, tensor_gpu, model, counter, r,
+                                    result, name_list, max_tensor_size, transform)
+
+        if counter != 0:
+            tensor_gpu = transform(tensor_cpu).to(device='cuda:0')
+            out = model(tensor_gpu)
+            for j in range(counter):
+                r.lpush(np.array2string(out[j]),
+                        json.dumps({"name": name_list[j]}))
