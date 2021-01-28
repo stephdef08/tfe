@@ -13,6 +13,7 @@ import multiprocessing
 import json
 
 
+@torch.no_grad()
 def detect_flesh(j, slide, nbr_patch_x):
     threshold = 224 * 224 * 225 * .7
     patch_list = []
@@ -28,11 +29,13 @@ def detect_flesh(j, slide, nbr_patch_x):
 
     return patch_list
 
+@torch.no_grad()
 def read_rgb_regions(index, slide):
     x, y = index
     return slide.read_region((x * 224, y * 224), 0,
                                   (224, 224)).convert('RGB')
 
+@torch.no_grad()
 def extract_mosaic(index, slide, extractor):
     i, j = index
     patch = slide.read_region((i * 224, j * 224), 0,
@@ -42,6 +45,7 @@ def extract_mosaic(index, slide, extractor):
     return (mosaic, index)
 
 class AddSlide:
+    @torch.no_grad()
     def __init__(self, model, r, path):
         self.max_tensor_size = 32
         self.tensor_cpu = torch.zeros(self.max_tensor_size, 3, 224, 224)
@@ -56,6 +60,7 @@ class AddSlide:
         )
         self.path = path
 
+    @torch.no_grad()
     def add_redis(self, counter, results, coordinates):
         for res in results:
             mosaic, x = res
@@ -77,6 +82,7 @@ class AddSlide:
                     counter = 0
         return counter
 
+    @torch.no_grad()
     def add_slide(self):
         num_cores = multiprocessing.cpu_count()
         with Parallel(n_jobs=num_cores, prefer="threads") as parallel:

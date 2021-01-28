@@ -12,11 +12,13 @@ import cv2
 from joblib import Parallel, delayed
 import multiprocessing
 
+@torch.no_grad()
 def extract_patches(subdir, file, extractor):
     img = cv2.imread(os.path.join(subdir, file))
     mosaic = extractor.extract_patches(img)
     return (mosaic, os.path.join(subdir, file))
 
+@torch.no_grad()
 def add_redis(tensor_cpu, tensor_gpu, model, counter, r, results, name_list, max_tensor_size, transform):
     for res in results:
         mosaic, name = res

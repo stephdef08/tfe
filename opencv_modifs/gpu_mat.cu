@@ -696,9 +696,10 @@ void cv::cuda::computeHistograms(const cv::cuda::GpuMat& image, cv::cuda::GpuMat
         for(int i = 0; i < width; i++)
         {
             nppSetStream(*streams[i]);
-            nppiHistogramEven_8u_C1R(image.data + j * 128 * image.step + 3 * i * 128, image.step, {384, 128},
-                reinterpret_cast<int*>(reinterpret_cast<char*>(hist.data) + (j * width + i) * hist.step), 256,
-                0, 256, buffer.get() + (j * width + i) * buffer_size);
+            nppiHistogramEven_8u_C1R(image.data + j * size_patch.height * image.step + 3 * i * size_patch.width,
+                image.step, {3 * size_patch.width, size_patch.height},
+                reinterpret_cast<int*>(reinterpret_cast<char*>(hist.data) + (j * width + i) * hist.step),
+                256, 0, 256, buffer.get() + (j * width + i) * buffer_size);
         }
     }
 }

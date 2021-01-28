@@ -4,6 +4,7 @@ from PIL import Image
 import KMeansRex
 import time
 import sys
+np.set_printoptions(edgeitems=30, linewidth=10000)
 
 #Replace with something more efficient
 def binarize(tensor):
@@ -24,6 +25,7 @@ class Extract:
         self.hist_list_gpu.setTo(0)
         self.img_gpu.upload(img)
         cv2.cuda.computeHistograms(self.img_gpu, self.hist_list_gpu, 8, 8)
+
         """
         b, g, r = cv2.cuda.split(self.img_gpu)
 
@@ -62,7 +64,6 @@ class Extract:
                 )
         """
         self.hist_list = self.hist_list_gpu.download()
-
         centroids, assignements = KMeansRex.RunKMeans(self.hist_list.astype(np.float64),
                                                       8, initname=b"random")
         assignements = np.array(assignements, dtype=np.int32).reshape(64)
@@ -111,3 +112,4 @@ if __name__ == "__main__":
     e = Extract()
     img = cv2.imread("/home/stephan/Downloads/thumb.svs")
     mosaic = e.extract_patches(img)
+    print(len(mosaic))
