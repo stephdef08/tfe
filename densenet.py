@@ -9,6 +9,7 @@ import numpy as np
 import cv2
 from utils import Extract
 from signal import signal, SIGINT
+import time
 
 
 def handler(signal, frame):
@@ -16,14 +17,14 @@ def handler(signal, frame):
     SIGINTTRIG = True
 
 class Model(nn.Module):
-    def __init__(self, eval=True):
+    def __init__(self, eval=True, batch_size=32):
         super(Model, self).__init__()
         self.model = models.densenet121(pretrained=True).cuda()
         for param in self.model.parameters():
             param.requires_grad = False
-        self.model.classifier = nn.Linear(1024, 128).cuda()
-        self.relu = nn.ReLU(inplace=True).cuda()
-        self.model.load_state_dict(torch.load("model"))
+        self.model.classifier = nn.Linear(1024, 32).cuda()
+        self.relu = nn.LeakyReLU().cuda()
+        self.model.load_state_dict(torch.load('model32'))
 
         if eval == True:
             self.model.eval()
@@ -31,6 +32,8 @@ class Model(nn.Module):
         else:
             self.model.train()
             self.eval = False
+            self.tmp_loss = torch.zeros(batch_size, device='cuda:0')
+            self.batch_size = batch_size
 
     def forward(self, input):
         if self.eval is True:
@@ -42,99 +45,78 @@ class Model(nn.Module):
         else:
             tensor = self.model(input)
             tensor = self.relu(tensor).to(device='cpu')
-            bin = utils.binarize(tensor)
-            return bin
+            return tensor
 
-    def _process(self, mosaic, tensor_cpu, tensor_gpu, func):
-        counter = 0
-        for m in mosaic:
-            m = transforms.Resize((224, 224))(m)
-            tensor_cpu[counter] = transforms.ToTensor()(m)
-            counter += 1
-
-            if counter == max_tensor_size:
-                tensor_gpu = transform(tensor_cpu.to(device='cuda:0'))
-                out = self.model(tensor_gpu)
-                for o in out:
-                    func(o)
-
-                counter = 0
-
-        if counter != 0:
-            tensor_gpu = transform(tensor_cpu.to(device='cuda:0'))
-            out = self.model(tensor_gpu)
-            for j in range(counter):
-                func(out[j])
-
-            counter = 0
+    """
+    def custom_loss(self, a, p, n):
+        self.tmp_loss = torch.sum(torch.abs(a-p), dim=1)
+        factor = len(self.tmp_loss[self.tmp_loss != 0])
+        self.tmp_loss = factor * self.tmp_loss \
+            - 8 * (len(self.tmp_loss) - factor) * torch.sum(torch.abs(a-n), dim=1) \
+            + 10 * factor
+        return torch.max(self.tmp_loss)
+    """
 
     def train(self, dir, epochs):
         global SIGINTTRIG
         SIGINTTRIG = False
-        opt = torch.optim.SGD(self.model.parameters(), lr=.001, momentum=.9)
-        triplet_loss = nn.TripletMarginLoss()
+
+        lr = 0.001
+
+        optimizer = torch.optim.SGD(self.model.parameters(), lr=lr, momentum=0.5)
 
         data = dataset.DRDataset(root=dir)
-        loader = torch.utils.data.DataLoader(data, batch_size=32, shuffle=True,
-                                             num_workers=4, pin_memory=True)
+        loader = torch.utils.data.DataLoader(data, batch_size=self.batch_size,
+                                             shuffle=True, num_workers=4,
+                                             pin_memory=True)
 
-        extractor = Extract()
-
-        max_tensor_size = 32
-
-        tensor_cpu = torch.zeros(max_tensor_size, 3, 224, 224)
-        tensor_gpu = torch.zeros(max_tensor_size, 3, 224, 224, device='cuda:0')
-
-        transform = torch.nn.Sequential(
-            transforms.Normalize(
-                mean=[0.485, 0.456, 0.406],
-                std=[0.229, 0.224, 0.225]
-            )
-        )
-
-        features_image = []
-
-        similar = []
-        not_similar = []
-
-        loss_similar = torch.zeros(1, device='cuda:0')
-        loss_not_similar = torch.zeros(1, device='cuda:0')
+        loss_function = torch.nn.TripletMarginLoss()
 
         signal(SIGINT, handler)
+
+        image0_gpu = torch.zeros((self.batch_size, 224, 224, 3), device='cuda:0')
+        image1_gpu = torch.zeros((self.batch_size, 224, 224, 3), device='cuda:0')
+        image2_gpu = torch.zeros((self.batch_size, 224, 224, 3), device='cuda:0')
+
+        loss_list = []
 
         for epoch in range(epochs):
             if SIGINTTRIG == True:
                 break
 
+            start_time = time.time()
+
             for i, (image0, image1, image2) in enumerate(loader):
-                print(image0.shape)
-                print(image1.shape)
-                print(image2.shape)
-                return
-                print(i)
+                image0_gpu = image0.to(device='cuda:0')
+                image1_gpu = image1.to(device='cuda:0')
+                image2_gpu = image2.to(device='cuda:0')
 
-                images0 = cv2.cvtColor(np.array(images0), cv2.COLOR_RGB2BGR)
-                mosaic = extractor.extract_patches(images0)
+                out0 = self.model(image0_gpu)
+                out1 = self.model(image1_gpu)
+                out2 = self.model(image2_gpu)
 
-                self._process(mosaic, tensor_cpu, tensor_gpu,
-                              lambda a : features_image.append(a))
-
-                images1 = cv2.cvtColor(np.array(images1), cv2.COLOR_RGB2BGR)
-                mosaic = extractor.extract_patches(images1)
-
-                self._process(mosaic, tensor_cpu, tensor_gpu,
-                              lambda a : similar.append(a))
-
-                images2 = cv2.cvtColor(np.array(images2), cv2.COLOR_RGB2BGR)
-                mosaic = extractor.extract_patches(images2)
-
-                self._process(mosaic, tensor_cpu, tensor_gpu,
-                              lambda a : not_similar_image.append(a))
-
-                loss_similar[0] = sum(similar)
-                loss_not_similar[0] = sum(not_similar)
-
-
-
+                loss = loss_function(out0, out1, out2)
 
                 optimizer.zero_grad(set_to_none=True)
+                loss.backward()
+                optimizer.step()
+
+                loss_list.append(loss.item())
+
+                if i % 100 == 0:
+                    print("epoch {}, batch {}, loss = {}".format(epoch, i,
+                                                                 np.mean(loss_list)))
+                    loss_list.clear()
+
+            print("time for epoch {}".format(time.time()- start_time))
+
+            torch.save(self.model.state_dict(), 'model32')
+
+            if (epoch + 1) % 4:
+                for param in optimizer.param_groups:
+                    lr /= 2
+                    param['lr'] = lr
+
+if __name__ == "__main__":
+    m = Model(False)
+    m.train("tmp/", 20)

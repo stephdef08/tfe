@@ -11,6 +11,7 @@ import utils
 import cv2
 from joblib import Parallel, delayed
 import multiprocessing
+from collections import Counter
 
 @torch.no_grad()
 def extract_patches(subdir, file, extractor):
@@ -19,24 +20,25 @@ def extract_patches(subdir, file, extractor):
     return (mosaic, os.path.join(subdir, file))
 
 @torch.no_grad()
-def add_redis(tensor_cpu, tensor_gpu, model, counter, r, results, name_list, max_tensor_size, transform):
+def add_redis(tensor_cpu, tensor_gpu, model, i, r, results, name_list, max_tensor_size, transform):
     for res in results:
         mosaic, name = res
+        counter = Counter()
         for j in range(len(mosaic)):
             name_list.append(name)
             img = transforms.Resize((224, 224))(mosaic[j])
-            tensor_cpu[counter] = transforms.ToTensor()(img)
-            counter += 1
+            tensor_cpu[i] = transforms.ToTensor()(img)
+            i += 1
 
-            if counter == max_tensor_size:
+            if i == max_tensor_size:
                 tensor_gpu = transform(tensor_cpu.to(device='cuda:0'))
                 out = model(tensor_gpu)
                 for k in range(max_tensor_size):
                     r.lpush(np.array2string(out[k]),
                             json.dumps({"name": name_list[k]}))
                 name_list.clear()
-                counter = 0
-    return counter
+                i = 0
+    return i
 
 if __name__ == "__main__":
     usage = "python3 add_images.py --path <folder> [--extractor <algorithm>]"

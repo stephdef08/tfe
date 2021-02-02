@@ -4,14 +4,20 @@ from PIL import Image
 import KMeansRex
 import time
 import sys
-np.set_printoptions(edgeitems=30, linewidth=10000)
+import torch
 
 #Replace with something more efficient
-def binarize(tensor):
-    binary_rep = np.zeros((tensor.shape[0], tensor.shape[1]))
-    binary_rep[tensor > .5] = 1
-    binary_rep[tensor <= .5] = 0
-    return binary_rep
+def binarize(tensor, train=False):
+    if train == False:
+        binary_rep = np.zeros((tensor.shape[0], tensor.shape[1]))
+        binary_rep[tensor > .5] = 1
+        binary_rep[tensor <= .5] = 0
+        return binary_rep
+    else:
+        binary_rep = torch.zeros((tensor.shape[0], tensor.shape[1]), device='cuda:0')
+        binary_rep[tensor > .5] = 1
+        binary_rep[tensor <= .5] = 0
+        return binary_rep
 
 class Extract:
     def __init__(self):

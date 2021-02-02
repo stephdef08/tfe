@@ -5,19 +5,24 @@ import numpy as np
 from torch.utils.data import Dataset
 from PIL import Image
 import cv2
+import pickle
+from collections import defaultdict
 
 # code inspired from
 # https://github.com/SathwikTejaswi/deep-ranking/blob/master/Code/data_utils.py
 
 class DRDataset(Dataset):
+
     def __init__(self, root='image_folder', transform=None, train=True):
         if transform == None:
             transform = transforms.Compose(
                 [
-                    transforms.Resize((224, 224)),
                     transforms.RandomVerticalFlip(.5),
                     transforms.RandomHorizontalFlip(.5),
-                    transforms.ColorJitter(brightness=0, contrast=0, saturation=1, hue=.5)
+                    transforms.ColorJitter(brightness=0, contrast=0, saturation=1, hue=.5),
+                    transforms.Resize((32, 32)),
+                    transforms.Resize((224, 224)),
+                    transforms.ToTensor()
                 ]
             )
 
@@ -63,6 +68,86 @@ class DRDataset(Dataset):
         for i in paths:
             tmp = Image.open(i).convert('RGB')
             tmp = self.transform(tmp)
-            tmp = cv2.cvtColor(np.array(tmp), cv2.COLOR_RGB2BGR)
             images.append(tmp)
+
         return (images[0], images[1], images[2])
+
+    """
+    def __init__(self, root='image_folder', transform=None):
+        if transform == None:
+            transform = transforms.Compose(
+                [
+                    transforms.Resize((32, 32)),
+                    transforms.RandomVerticalFlip(.5),
+                    transforms.RandomHorizontalFlip(.5),
+                    transforms.ColorJitter(brightness=0, contrast=0,
+                                           saturation=1, hue=.5),
+                    transforms.Resize((224, 224)),
+                    transforms.ToTensor(),
+                    transforms.Normalize(
+                        mean=[0.485, 0.456, 0.406],
+                        std=[0.229, 0.224, 0.225]
+                    )
+                ]
+            )
+
+        self.root = root
+        self.transform = transform
+
+        self.test = pickle.load(open(os.path.join(root, 'test'), 'rb'),
+                                encoding='bytes')
+        self.train = pickle.load(open(os.path.join(root, 'train'), 'rb'),
+                                 encoding='bytes')
+
+        self.dict_label = defaultdict(list)
+        self.size = 0
+
+        self.len_test = len(self.test[b'fine_labels'])
+
+        for i, label in enumerate(self.test[b'fine_labels']):
+            self.dict_label[label].append(i)
+            self.size += 1
+        for i, label in enumerate(self.train[b'fine_labels']):
+            self.dict_label[label].append(i + self.len_test)
+            self.size += 1
+
+    def __len__(self):
+        return self.size
+
+    def __getitem__(self, idx):
+        label = -1
+        images = []
+
+        if idx < len(self.test[b'fine_labels']):
+            label = self.test[b'fine_labels'][idx]
+            images.append(self.test[b'data'][idx])
+        else:
+            idx -= self.len_test
+            label = self.train[b'fine_labels'][idx]
+            images.append(self.train[b'data'][idx])
+
+        idx = np.random.choice(self.dict_label[label])
+
+        if idx < len(self.test[b'fine_labels']):
+            images.append(self.test[b'data'][idx])
+        else:
+            images.append(self.train[b'data'][idx-self.len_test])
+
+        choices_negative = list(range(label)) + list(range(label+1, 100))
+        negative = np.random.choice(choices_negative)
+        idx = np.random.choice(self.dict_label[negative])
+
+        if idx < len(self.test[b'fine_labels']):
+            images.append(self.test[b'data'][idx])
+        else:
+            images.append(self.train[b'data'][idx-self.len_test])
+
+        for i in range(3):
+            images[i] = cv2.merge([np.array(images[i][:1024]).reshape((32, 32)),
+                                   np.array(images[i][1024:2048]).reshape((32, 32)),
+                                   np.array(images[i][2048:]).reshape((32, 32))])
+            images[i] = Image.fromarray(images[i])
+            images[i] = self.transform(images[i])
+
+        return (images[0], images[1], images[2])
+        """
