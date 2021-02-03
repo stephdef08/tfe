@@ -340,7 +340,8 @@ public:
     Allocator* allocator;
 };
 
-CV_EXPORTS_W void computeHistograms(const GpuMat& image, GpuMat& hist, int width, int height);
+CV_EXPORTS_W void computeHistograms(const GpuMat& image, GpuMat& hist,
+    const std::vector<int>& patch_list, int width, int height);
 
 /** @brief Creates a continuous matrix.
 

@@ -20,7 +20,9 @@ def detect_flesh(j, slide, nbr_patch_x):
     for i in range(1, nbr_patch_x):
         patch = slide.read_region((i * 224, j * 224), 0,
                                   (224, 224)).convert('L')
-
+        #wrong, have to change that
+        #totally white patches will be accepted
+        #have to threshold the thumb
         _, patch_threshold = cv2.threshold(np.array(patch), 0, 255,
                                            cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 

@@ -634,22 +634,28 @@ void cv::cuda::convertFp16(InputArray _src, OutputArray _dst, Stream& stream)
 thread_local int stream_size = 0;
 thread_local int buffer_size = 0;
 
-std::shared_ptr<unsigned char>& getHistogramBuffer(int width, int height)
+std::vector<std::shared_ptr<unsigned char>>& getHistogramBuffer(int width, int height, int nbr)
 {
-    int size_tmp;
-    nppiHistogramRangeGetBufferSize_8u_C1R({3*width, height}, 256, &size_tmp);
-    thread_local std::shared_ptr<unsigned char> buffer;
+    thread_local std::vector<std::shared_ptr<unsigned char>> buffer;
 
-    if(size_tmp > buffer_size)
+    if(nbr > buffer_size)
     {
-        buffer_size = size_tmp;
-        unsigned char* tmp;
-        cudaMalloc(&tmp, 8 * 8 * size_tmp);
+        int size_tmp;
+        nppiHistogramRangeGetBufferSize_8u_C1R({3*width, height}, 256, &size_tmp);
+        buffer.resize(nbr);
 
-        buffer.reset(tmp, [](unsigned char* ptr)
+        for(int i = buffer_size; i < nbr; i++)
         {
-            cudaFree(ptr);
-        });
+            unsigned char* tmp;
+            cudaMalloc(&tmp, size_tmp);
+
+            buffer[i].reset(tmp, [](unsigned char* ptr)
+            {
+                cudaFree(ptr);
+            });
+        }
+
+        buffer_size = nbr;
     }
 
     return buffer;
@@ -682,25 +688,28 @@ std::vector<std::shared_ptr<cudaStream_t>>& getStreams(int numbers)
 }
 
 void cv::cuda::computeHistograms(const cv::cuda::GpuMat& image, cv::cuda::GpuMat& hist,
-    int width, int height)
+    const std::vector<int>& patch_list, int width, int height)
 {
     cv::Size size = image.size();
     cv::Size size_patch = {size.width / width, size.height / height};
 
-    auto buffer = getHistogramBuffer(size_patch.width, size_patch.height);
+    auto buffer = getHistogramBuffer(size_patch.width, size_patch.height, patch_list.size());
 
-    auto streams = getStreams(width * height);
+    auto streams = getStreams(patch_list.size());
 
-    for(int j = 0; j < height; j++)
+    for(size_t el = 0; el < patch_list.size(); el++)
     {
-        for(int i = 0; i < width; i++)
-        {
-            nppSetStream(*streams[i]);
-            nppiHistogramEven_8u_C1R(image.data + j * size_patch.height * image.step + 3 * i * size_patch.width,
-                image.step, {3 * size_patch.width, size_patch.height},
-                reinterpret_cast<int*>(reinterpret_cast<char*>(hist.data) + (j * width + i) * hist.step),
-                256, 0, 256, buffer.get() + (j * width + i) * buffer_size);
-        }
+        int j = patch_list[el] / 10;
+        int i = patch_list[el] % 10;
+
+        nppSetStream(*streams[el]);
+        auto ret = nppiHistogramEven_8u_C1R(image.data + j * size_patch.height * image.step + 3 * i * size_patch.width,
+            image.step, {3 * size_patch.width, size_patch.height},
+            reinterpret_cast<int*>(hist.data + el * hist.step),
+            256, 0, 255, buffer[el].get());
+
+        if(ret != NPP_SUCCESS)
+	       std::cout << ret << std::endl;
     }
 }
 
