@@ -112,7 +112,8 @@ def test():
                             names = r.lrange(np.array2string(out[k]), 0, -1)
 
                             for l in range(len(names)):
-                                counter[json.loads(names[l].decode("utf-8"))["name"]] += 1
+                                js = json.loads(names[l].decode("utf-8"))
+                                counter[js["name"]] += js["value"]
                         idx_tensor = 0
 
                 if idx_tensor != 0:
@@ -122,7 +123,8 @@ def test():
                         names = r.lrange(np.array2string(out[j]), 0, -1)
 
                         for k in range(len(names)):
-                            counter[json.loads(names[k].decode("utf-8"))["name"]] += 1
+                            js = json.loads(names[k].decode("utf-8"))
+                            counter[js["name"]] += js["value"]
 
                 similar = [tmp[0] for tmp in counter.most_common(5)]
                 counter.clear()

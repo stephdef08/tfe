@@ -39,7 +39,9 @@ def retrieve_image(r, path, model, extractor, tensor_cpu, tensor_gpu,
                 names = r.lrange(np.array2string(out[k]), 0, -1)
 
                 for l in range(len(names)):
-                    counter[json.loads(names[l].decode("utf-8"))["name"]] += 1
+                    js = json.loads(names[l].decode("utf-8"))
+                    print(js["name"], js["value"])
+                    counter[js["name"]] += js["value"]
             i = 0
 
     if i != 0:
@@ -49,7 +51,9 @@ def retrieve_image(r, path, model, extractor, tensor_cpu, tensor_gpu,
             names = r.lrange(np.array2string(out[j]), 0, -1)
 
             for k in range(len(names)):
-                counter[json.loads(names[k].decode("utf-8"))["name"]] += 1
+                js = json.loads(names[k].decode("utf-8"))
+                print(js["name"], js["value"])
+                counter[js["name"]] += js["value"]
 
     return counter
 

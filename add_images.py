@@ -25,7 +25,7 @@ def add_redis(tensor_cpu, tensor_gpu, model, i, r, results, name_list, max_tenso
         mosaic, name = res
         counter = Counter()
         for j in range(len(mosaic)):
-            name_list.append(name)
+            name_list.append((name, 1 / len(mosaic)))
             img = transforms.Resize((224, 224))(mosaic[j])
             tensor_cpu[i] = transforms.ToTensor()(img)
             i += 1
@@ -35,7 +35,8 @@ def add_redis(tensor_cpu, tensor_gpu, model, i, r, results, name_list, max_tenso
                 out = model(tensor_gpu)
                 for k in range(max_tensor_size):
                     r.lpush(np.array2string(out[k]),
-                            json.dumps({"name": name_list[k]}))
+                            json.dumps({"name": name_list[k][0],
+                                        "value": name_list[k][1]}))
                 name_list.clear()
                 i = 0
     return i
@@ -119,4 +120,5 @@ if __name__ == "__main__":
             out = model(tensor_gpu)
             for j in range(counter):
                 r.lpush(np.array2string(out[j]),
-                        json.dumps({"name": name_list[j]}))
+                        json.dumps({"name": name_list[j][0],
+                                    "value": name_list[j][1]}))

@@ -47,16 +47,6 @@ class Model(nn.Module):
             tensor = self.relu(tensor).to(device='cpu')
             return tensor
 
-    """
-    def custom_loss(self, a, p, n):
-        self.tmp_loss = torch.sum(torch.abs(a-p), dim=1)
-        factor = len(self.tmp_loss[self.tmp_loss != 0])
-        self.tmp_loss = factor * self.tmp_loss \
-            - 8 * (len(self.tmp_loss) - factor) * torch.sum(torch.abs(a-n), dim=1) \
-            + 10 * factor
-        return torch.max(self.tmp_loss)
-    """
-
     def train(self, dir, epochs):
         global SIGINTTRIG
         SIGINTTRIG = False
@@ -110,7 +100,7 @@ class Model(nn.Module):
 
             print("time for epoch {}".format(time.time()- start_time))
 
-            torch.save(self.model.state_dict(), 'model32')
+            torch.save(self.model.state_dict(), 'model16')
 
             if (epoch + 1) % 4:
                 for param in optimizer.param_groups:
@@ -119,4 +109,4 @@ class Model(nn.Module):
 
 if __name__ == "__main__":
     m = Model(False)
-    m.train("tmp/", 20)
+    m.train("tmp/", 5)

@@ -673,7 +673,6 @@ std::vector<std::shared_ptr<cudaStream_t>>& getStreams(int numbers)
         {
             cudaStream_t* str = new cudaStream_t;
             cudaStreamCreate(str);
-
             streams[i].reset(str, [](cudaStream_t* ptr)
             {
                 cudaStreamDestroy(*ptr);
@@ -701,16 +700,17 @@ void cv::cuda::computeHistograms(const cv::cuda::GpuMat& image, cv::cuda::GpuMat
     {
         int j = patch_list[el] / 10;
         int i = patch_list[el] % 10;
-
         nppSetStream(*streams[el]);
         auto ret = nppiHistogramEven_8u_C1R(image.data + j * size_patch.height * image.step + 3 * i * size_patch.width,
             image.step, {3 * size_patch.width, size_patch.height},
             reinterpret_cast<int*>(hist.data + el * hist.step),
             256, 0, 255, buffer[el].get());
-
+            
         if(ret != NPP_SUCCESS)
-	       std::cout << ret << std::endl;
+            std::cout << ret << std::endl;
     }
+
+    cudaStreamSynchronize(0);
 }
 
 #endif

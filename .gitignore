@@ -3,3 +3,4 @@ dump.rdb
 __pycache__
 downloads*
 tmp*
+camelyon*

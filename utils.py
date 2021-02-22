@@ -5,6 +5,7 @@ import KMeansRex
 import time
 import sys
 import torch
+from joblib import Parallel, delayed
 
 #Replace with something more efficient
 def binarize(tensor, train=False):
@@ -31,65 +32,29 @@ class Extract:
         _, img_grey = cv2.threshold(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), 0, 255,
                                  cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
+
         threshold = 128 * 128 * 255 * 0.9
+
 
         patch_list = []
 
         for j in range(8):
             for i in range(8):
                 patch_thresh = img_grey[j*128:(j+1)*128, i*128:(i+1)*128]
-
                 if patch_thresh.sum() < threshold:
                     patch_list.append(j * 10 + i)
 
         mosaic = []
 
         if len(patch_list) >= 8:
-            self.hist_list_gpu.setTo(0)
             self.img_gpu.upload(img)
             cv2.cuda.computeHistograms(self.img_gpu, self.hist_list_gpu,
                                        patch_list, 8, 8)
 
-            """
-            b, g, r = cv2.cuda.split(self.img_gpu)
-
-            for j in range(8):
-                for i in range(8):
-                    cv2.cuda.calcHist(
-                        b.rowRange(j*128, (j+1)*128).colRange(i*128,(i+1)*128),
-                        stream=self.streams[j*8+i]
-                    ).convertTo(rtype=0, stream=self.streams[j*8+i], dst=self.tmp[j*8+i])
-                    cv2.cuda.add(
-                        self.tmp[j*8+i],
-                        self.hist_list_gpu.row(j*8+i), dst=self.hist_list_gpu.row(j*8+i),
-                        stream=self.streams[j*8+i]
-                    )
-            for j in range(8):
-                for i in range(8):
-                    cv2.cuda.calcHist(
-                        g.rowRange(j*128, (j+1)*128).colRange(i*128,(i+1)*128),
-                        stream=self.streams[j*8+i]
-                    ).convertTo(rtype=0, stream=self.streams[j*8+i], dst=self.tmp[j*8+i])
-                    cv2.cuda.add(
-                        self.tmp[j*8+i],
-                        self.hist_list_gpu.row(j*8+i), dst=self.hist_list_gpu.row(j*8+i),
-                        stream=self.streams[j*8+i]
-                    )
-            for j in range(8):
-                for i in range(8):
-                    cv2.cuda.calcHist(
-                        r.rowRange(j*128, (j+1)*128).colRange(i*128,(i+1)*128),
-                        stream=self.streams[j*8+i]
-                    ).convertTo(rtype=0, stream=self.streams[j*8+i], dst=self.tmp[j*8+i])
-                    cv2.cuda.add(
-                        self.tmp[j*8+i],
-                        self.hist_list_gpu.row(j*8+i), dst=self.hist_list_gpu.row(j*8+i),
-                        stream=self.streams[j*8+i]
-                    )
-            """
             self.hist_list = self.hist_list_gpu.download()
+
             centroids, assignements = KMeansRex.RunKMeans(self.hist_list[:len(patch_list)].astype(np.float64),
-                                                          8, initname=b"random")
+                                                          8)
             assignements = np.array(assignements, dtype=np.int32).reshape(len(patch_list))
 
             label_list = [[] for i in range(8)]
@@ -105,9 +70,8 @@ class Extract:
                 if nbr_clusters > 1:
                     centroids, assignements = KMeansRex.RunKMeans(np.array(label_list[i],
                                                                            dtype=np.float64),
-                                                                  nbr_clusters,
-                                                                  initname=b"random")
-                    indices = [x for x in range(8)]
+                                                                  nbr_clusters)
+                    indices = [x for x in range(nbr_clusters)]
                     for j in range(len(assignements)):
                         if assignements[j] in indices:
                             indices.remove(assignements[j])
@@ -115,7 +79,7 @@ class Extract:
                 else:
                     for j in range(len(label_list_indices[i])):
                         mosaic.append(label_list_indices[i][j])
-
+            #mosaic = list(np.random.choice(patch_list, 8 + round(np.log2(len(patch_list)))))
         else:
             for idx in patch_list:
                 mosaic.append(idx)
@@ -135,9 +99,13 @@ class Extract:
         return mosaic
 
 
+def test(extractor, img):
+    mosaic = extractor.extract_patches(img)
+
+
 if __name__ == "__main__":
-    e = Extract()
-    img = cv2.imread("/home/stephan/Documents/tfe/image_folder/val/36/2288_932202.png")
-    mosaic = e.extract_patches(img)
-    for m in mosaic:
-        m.show()
+    extractor = [Extract()] * 32
+    imgs = [cv2.imread("/home/stephan/Documents/tfe1/image_folder/test/39/0527.png")] * 32
+
+    with Parallel(n_jobs=24, prefer="threads") as parallel:
+        result = parallel(delayed(test)(e, i) for e, i in zip(extractor, imgs))

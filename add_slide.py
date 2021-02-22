@@ -14,17 +14,15 @@ import json
 
 
 @torch.no_grad()
-def detect_flesh(j, slide, nbr_patch_x):
+def detect_flesh(j, slide, nbr_patch_x, thresh):
     threshold = 224 * 224 * 225 * .7
     patch_list = []
     for i in range(1, nbr_patch_x):
         patch = slide.read_region((i * 224, j * 224), 0,
                                   (224, 224)).convert('L')
-        #wrong, have to change that
-        #totally white patches will be accepted
-        #have to threshold the thumb
-        _, patch_threshold = cv2.threshold(np.array(patch), 0, 255,
-                                           cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+        _, patch_threshold = cv2.threshold(np.array(patch), thresh, 255,
+                                           cv2.THRESH_BINARY)
 
         if patch_threshold.sum() < threshold:
             patch_list.append((i, j))
@@ -94,21 +92,27 @@ class AddSlide:
 
             (nbr_patch_x, nbr_patch_y) = (width // 224, height //224)
 
+            thumb = slide.get_thumbnail((nbr_patch_x * 10,
+                                         nbr_patch_y * 10)).convert('L')
+            thresh, _  = cv2.threshold(np.array(thumb), 0, 255,
+                                       cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
             patch_list = []
 
             rng = range(1, nbr_patch_y-1)
             s = [slide] * (nbr_patch_y-2)
             n = [nbr_patch_x-1] * (nbr_patch_y-2)
+            thresh = [thresh] * (nbr_patch_y-2)
 
-            result = parallel(delayed(detect_flesh)(i, j, k) \
-                              for i, j, k in zip(rng, s, n))
+            result = parallel(delayed(detect_flesh)(i, j, k, t) \
+                              for i, j, k, t in zip(rng, s, n, thresh))
 
             patch_list = []
 
             for res in result:
                 patch_list += res
 
-            tensor_out = torch.zeros(len(patch_list), 128)
+            tensor_out = torch.zeros(len(patch_list), 32)
 
             nbr_iter = len(patch_list) // self.max_tensor_size
             s = [slide] * self.max_tensor_size
@@ -155,6 +159,10 @@ class AddSlide:
 
             coordinates_list = []
             final_patch_list = [x for x in final_patch_list if isinstance(x, tuple)]
+
+            for x in final_patch_list:
+                patch = slide.read_region((x[0] * 224, x[1] * 224), 0,
+                                          (224, 224)).convert('RGB')
 
             nbr_iter = len(final_patch_list) // self.max_tensor_size
             s = [slide] * self.max_tensor_size
