@@ -40,8 +40,8 @@ class Model(nn.Module):
             with torch.no_grad():
                 tensor = self.model(input)
                 tensor = self.relu(tensor).to(device='cpu')
-                bin = utils.binarize(tensor)
-                return bin
+                #bin = utils.binarize(tensor)
+                return tensor
         else:
             tensor = self.model(input)
             tensor = self.relu(tensor).to(device='cpu')
@@ -51,7 +51,7 @@ class Model(nn.Module):
         global SIGINTTRIG
         SIGINTTRIG = False
 
-        lr = 0.001
+        lr = 0.01
 
         optimizer = torch.optim.SGD(self.model.parameters(), lr=lr, momentum=0.5)
 
@@ -64,9 +64,9 @@ class Model(nn.Module):
 
         signal(SIGINT, handler)
 
-        image0_gpu = torch.zeros((self.batch_size, 224, 224, 3), device='cuda:0')
-        image1_gpu = torch.zeros((self.batch_size, 224, 224, 3), device='cuda:0')
-        image2_gpu = torch.zeros((self.batch_size, 224, 224, 3), device='cuda:0')
+        image0_gpu = torch.zeros((self.batch_size, 3, 224, 224), device='cuda:0')
+        image1_gpu = torch.zeros((self.batch_size, 3, 224, 224), device='cuda:0')
+        image2_gpu = torch.zeros((self.batch_size, 3, 224, 224), device='cuda:0')
 
         loss_list = []
 
@@ -100,7 +100,7 @@ class Model(nn.Module):
 
             print("time for epoch {}".format(time.time()- start_time))
 
-            torch.save(self.model.state_dict(), 'model16')
+            torch.save(self.model.state_dict(), 'model32')
 
             if (epoch + 1) % 4:
                 for param in optimizer.param_groups:

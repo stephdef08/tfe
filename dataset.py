@@ -20,9 +20,13 @@ class DRDataset(Dataset):
                     transforms.RandomVerticalFlip(.5),
                     transforms.RandomHorizontalFlip(.5),
                     transforms.ColorJitter(brightness=0, contrast=0, saturation=1, hue=.5),
-                    #transforms.Resize((32, 32)),
+                    transforms.Resize((32, 32)),
                     transforms.Resize((224, 224)),
-                    transforms.ToTensor()
+                    transforms.ToTensor(),
+                    transforms.Normalize(
+                        mean=[0.485, 0.456, 0.406],
+                        std=[0.229, 0.224, 0.225]
+                    )
                 ]
             )
 
@@ -71,3 +75,30 @@ class DRDataset(Dataset):
             images.append(tmp)
 
         return (images[0], images[1], images[2])
+
+class AddDataset(Dataset):
+    def __init__(self, root):
+        self.root = root
+        self.list_img = []
+        self.transform = transforms.Compose(
+            [
+                transforms.Resize((224, 224)),
+                transforms.ToTensor(),
+                transforms.Normalize(
+                    mean=[0.485, 0.456, 0.406],
+                    std=[0.229, 0.224, 0.225]
+                )
+            ]
+        )
+
+        for subdir, dirs, files in os.walk(root):
+            for f in files:
+                self.list_img.append(os.path.join(subdir, f))
+
+    def __len__(self):
+        return len(self.list_img)
+
+    def __getitem__(self, idx):
+        return self.transform(
+            Image.open(self.list_img[idx]).convert('RGB')
+            ), self.list_img[idx]
