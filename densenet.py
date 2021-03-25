@@ -12,7 +12,7 @@ import time
 
 
 class Model(nn.Module):
-    def __init__(self, eval=True, batch_size=32, num_features=32, threshold=.5):
+    def __init__(self, eval=True, batch_size=32, num_features=128, threshold=.5):
         super(Model, self).__init__()
         self.conv_net = models.densenet121(pretrained=True).cuda()
 
@@ -59,9 +59,7 @@ class Model(nn.Module):
 
                 tensor4 = norm(torch.cat((tensor2, tensor3), 1))
 
-                bin = utils.binarize(self.linear(torch.cat((tensor1, tensor4),
-                                                           1)).to(device='cpu'))
-                return bin
+                return self.linear(torch.cat((tensor1, tensor4), 1)).to(device='cpu')
         else:
             tensor1 = self.conv_net(input)
             tensor1 = norm(self.relu(tensor1))

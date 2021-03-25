@@ -19,7 +19,7 @@ class TestDataset(Dataset):
     def __init__(self, root='image_folder/val'):
         self.root = root
 
-        list_classes = list(range(32,47))
+        list_classes = list(range(67))
 
         self.dic_img = defaultdict(list)
         self.img_list = []

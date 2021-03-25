@@ -1,0 +1,504 @@
+features 16 thresh 0.1 extraction random
+
+
+top 1 accuracy :  0.10135135135135136
+top 5 accuracy :  0.5472972972972973
+Hit rate first :  0.5375657700701769
+Mean hit rate first five :  0.5900937300765347
+features 32 thresh 0.1 extraction random
+
+
+top 1 accuracy :  0.125
+top 5 accuracy :  0.4797297297297297
+Hit rate first :  0.47814038832861433
+Mean hit rate first five :  0.4609635462087756
+features 64 thresh 0.1 extraction random
+
+
+top 1 accuracy :  0.25675675675675674
+top 5 accuracy :  0.7195945945945946
+Hit rate first :  0.20611727675540695
+Mean hit rate first five :  0.20525521083705014
+features 128 thresh 0.1 extraction random
+
+
+top 1 accuracy :  0.24662162162162163
+top 5 accuracy :  0.652027027027027
+Hit rate first :  0.11158027045433135
+Mean hit rate first five :  0.10638150593282159
+features 16 thresh 0.2 extraction random
+
+
+top 1 accuracy :  0.15878378378378377
+top 5 accuracy :  0.4594594594594595
+Hit rate first :  0.5456659502415875
+Mean hit rate first five :  0.5867932059215929
+features 32 thresh 0.2 extraction random
+
+
+top 1 accuracy :  0.1554054054054054
+top 5 accuracy :  0.5
+Hit rate first :  0.4811064440121541
+Mean hit rate first five :  0.4921553935616301
+features 64 thresh 0.2 extraction random
+
+
+top 1 accuracy :  0.25
+top 5 accuracy :  0.6790540540540541
+Hit rate first :  0.19894409197929883
+Mean hit rate first five :  0.2001293270729084
+features 128 thresh 0.2 extraction random
+
+
+top 1 accuracy :  0.23648648648648649
+top 5 accuracy :  0.6554054054054054
+Hit rate first :  0.11223691244294627
+Mean hit rate first five :  0.10583662219247428
+features 16 thresh 0.3 extraction random
+
+
+top 1 accuracy :  0.10135135135135136
+top 5 accuracy :  0.5878378378378378
+Hit rate first :  0.535759537193938
+Mean hit rate first five :  0.5892034869665673
+features 32 thresh 0.3 extraction random
+
+
+top 1 accuracy :  0.125
+top 5 accuracy :  0.46283783783783783
+Hit rate first :  0.4040656450118538
+Mean hit rate first five :  0.46766747738858677
+features 64 thresh 0.3 extraction random
+
+
+top 1 accuracy :  0.27364864864864863
+top 5 accuracy :  0.7027027027027027
+Hit rate first :  0.2026144401781049
+Mean hit rate first five :  0.20752534397137712
+features 128 thresh 0.3 extraction random
+
+
+top 1 accuracy :  0.2668918918918919
+top 5 accuracy :  0.6351351351351351
+Hit rate first :  0.11022784919208713
+Mean hit rate first five :  0.10550654694328393
+features 16 thresh 0.4 extraction random
+
+
+top 1 accuracy :  0.12837837837837837
+top 5 accuracy :  0.5101351351351351
+Hit rate first :  0.5521820418268453
+Mean hit rate first five :  0.5895477403009961
+features 32 thresh 0.4 extraction random
+
+
+top 1 accuracy :  0.13851351351351351
+top 5 accuracy :  0.5168918918918919
+Hit rate first :  0.4469653662941286
+Mean hit rate first five :  0.4726283874352605
+features 64 thresh 0.4 extraction random
+
+
+top 1 accuracy :  0.2939189189189189
+top 5 accuracy :  0.6858108108108109
+Hit rate first :  0.19732355251305647
+Mean hit rate first five :  0.1990294454728562
+features 128 thresh 0.4 extraction random
+
+
+top 1 accuracy :  0.2702702702702703
+top 5 accuracy :  0.6621621621621622
+Hit rate first :  0.11420261474657631
+Mean hit rate first five :  0.10845808852599555
+features 16 thresh 0.5 extraction random
+
+
+top 1 accuracy :  0.17905405405405406
+top 5 accuracy :  0.5574324324324325
+Hit rate first :  0.5489640356296203
+Mean hit rate first five :  0.5851600232213056
+features 32 thresh 0.5 extraction random
+
+
+top 1 accuracy :  0.14527027027027026
+top 5 accuracy :  0.5337837837837838
+Hit rate first :  0.4625058537994446
+Mean hit rate first five :  0.47789756537028266
+features 64 thresh 0.5 extraction random
+
+
+top 1 accuracy :  0.2533783783783784
+top 5 accuracy :  0.6925675675675675
+Hit rate first :  0.19540922735406116
+Mean hit rate first five :  0.19723763499831035
+features 128 thresh 0.5 extraction random
+
+
+top 1 accuracy :  0.23986486486486486
+top 5 accuracy :  0.6385135135135135
+Hit rate first :  0.10843896823799679
+Mean hit rate first five :  0.10497945922248833
+features 16 thresh 0.6 extraction random
+
+
+top 1 accuracy :  0.125
+top 5 accuracy :  0.5236486486486487
+Hit rate first :  0.5226115265917218
+Mean hit rate first five :  0.5799375469767023
+features 32 thresh 0.6 extraction random
+
+
+top 1 accuracy :  0.16554054054054054
+top 5 accuracy :  0.5033783783783784
+Hit rate first :  0.4750748251435474
+Mean hit rate first five :  0.49589934077049963
+features 64 thresh 0.6 extraction random
+
+
+top 1 accuracy :  0.2668918918918919
+top 5 accuracy :  0.6418918918918919
+Hit rate first :  0.19818288778614074
+Mean hit rate first five :  0.198630749247961
+features 128 thresh 0.6 extraction random
+
+
+top 1 accuracy :  0.2533783783783784
+top 5 accuracy :  0.6486486486486487
+Hit rate first :  0.10803821101864704
+Mean hit rate first five :  0.10559596123838735
+features 16 thresh 0.7 extraction random
+
+
+top 1 accuracy :  0.16554054054054054
+top 5 accuracy :  0.5371621621621622
+Hit rate first :  0.5444420619381266
+Mean hit rate first five :  0.5811738074725227
+features 32 thresh 0.7 extraction random
+
+
+top 1 accuracy :  0.14189189189189189
+top 5 accuracy :  0.49324324324324326
+Hit rate first :  0.5122544132752987
+Mean hit rate first five :  0.49133650062973805
+features 64 thresh 0.7 extraction random
+
+
+top 1 accuracy :  0.22972972972972974
+top 5 accuracy :  0.6790540540540541
+Hit rate first :  0.19045112098383654
+Mean hit rate first five :  0.1960779197534891
+features 128 thresh 0.7 extraction random
+
+
+top 1 accuracy :  0.23310810810810811
+top 5 accuracy :  0.6587837837837838
+Hit rate first :  0.10840528920907067
+Mean hit rate first five :  0.104515142812278
+features 16 thresh 0.8 extraction random
+
+
+top 1 accuracy :  0.0945945945945946
+top 5 accuracy :  0.543918918918919
+Hit rate first :  0.5289598683437439
+Mean hit rate first five :  0.5933498499959413
+features 32 thresh 0.8 extraction random
+
+
+top 1 accuracy :  0.16554054054054054
+top 5 accuracy :  0.47635135135135137
+Hit rate first :  0.4891668859458095
+Mean hit rate first five :  0.48580948257364603
+features 64 thresh 0.8 extraction random
+
+
+top 1 accuracy :  0.28716216216216217
+top 5 accuracy :  0.6756756756756757
+Hit rate first :  0.2011955124459247
+Mean hit rate first five :  0.19934775324851653
+features 128 thresh 0.8 extraction random
+
+
+top 1 accuracy :  0.23310810810810811
+top 5 accuracy :  0.6587837837837838
+Hit rate first :  0.11356149935703033
+Mean hit rate first five :  0.10586593446589734
+features 16 thresh 0.9 extraction random
+
+
+top 1 accuracy :  0.20945945945945946
+top 5 accuracy :  0.5033783783783784
+Hit rate first :  0.54930046001632
+Mean hit rate first five :  0.5919706698148781
+features 32 thresh 0.9 extraction random
+
+
+top 1 accuracy :  0.14189189189189189
+top 5 accuracy :  0.5
+Hit rate first :  0.4104743207392411
+Mean hit rate first five :  0.4641660667728592
+features 64 thresh 0.9 extraction random
+
+
+top 1 accuracy :  0.2702702702702703
+top 5 accuracy :  0.6621621621621622
+Hit rate first :  0.20517686901049423
+Mean hit rate first five :  0.2067677636425198
+features 128 thresh 0.9 extraction random
+
+
+top 1 accuracy :  0.2668918918918919
+top 5 accuracy :  0.625
+Hit rate first :  0.10716094209481616
+Mean hit rate first five :  0.10386716267352956
+features 16 thresh 0.1 extraction compl_random
+
+
+top 1 accuracy :  0.1858108108108108
+top 5 accuracy :  0.5202702702702703
+Hit rate first :  0.5576648750459956
+Mean hit rate first five :  0.5843567087704994
+features 32 thresh 0.1 extraction compl_random
+
+
+top 1 accuracy :  0.13175675675675674
+top 5 accuracy :  0.5067567567567568
+Hit rate first :  0.4549257091262533
+Mean hit rate first five :  0.4788436778856822
+features 64 thresh 0.1 extraction compl_random
+
+
+top 1 accuracy :  0.26013513513513514
+top 5 accuracy :  0.6858108108108109
+Hit rate first :  0.2088993252209259
+Mean hit rate first five :  0.20608190093266954
+features 128 thresh 0.1 extraction compl_random
+
+
+top 1 accuracy :  0.2635135135135135
+top 5 accuracy :  0.6722972972972973
+Hit rate first :  0.1120722349789226
+Mean hit rate first five :  0.10334905499310425
+features 16 thresh 0.2 extraction compl_random
+
+
+top 1 accuracy :  0.0945945945945946
+top 5 accuracy :  0.5405405405405406
+Hit rate first :  0.5327491133856799
+Mean hit rate first five :  0.5970270072465945
+features 32 thresh 0.2 extraction compl_random
+
+
+top 1 accuracy :  0.16554054054054054
+top 5 accuracy :  0.49324324324324326
+Hit rate first :  0.43722149913865455
+Mean hit rate first five :  0.47220785379800334
+features 64 thresh 0.2 extraction compl_random
+
+
+top 1 accuracy :  0.22972972972972974
+top 5 accuracy :  0.6858108108108109
+Hit rate first :  0.19403631829268478
+Mean hit rate first five :  0.19787620396341227
+features 128 thresh 0.2 extraction compl_random
+
+
+top 1 accuracy :  0.21283783783783783
+top 5 accuracy :  0.6182432432432432
+Hit rate first :  0.11473163664315193
+Mean hit rate first five :  0.10580860694915674
+features 16 thresh 0.3 extraction compl_random
+
+
+top 1 accuracy :  0.10135135135135136
+top 5 accuracy :  0.4966216216216216
+Hit rate first :  0.5372439993375628
+Mean hit rate first five :  0.5929397287931533
+features 32 thresh 0.3 extraction compl_random
+
+
+top 1 accuracy :  0.13851351351351351
+top 5 accuracy :  0.4864864864864865
+Hit rate first :  0.41631142877678806
+Mean hit rate first five :  0.45703878365893114
+features 64 thresh 0.3 extraction compl_random
+
+
+top 1 accuracy :  0.24324324324324326
+top 5 accuracy :  0.6655405405405406
+Hit rate first :  0.20509904301549703
+Mean hit rate first five :  0.20633520468201244
+features 128 thresh 0.3 extraction compl_random
+
+
+top 1 accuracy :  0.25
+top 5 accuracy :  0.6317567567567568
+Hit rate first :  0.1101338706159776
+Mean hit rate first five :  0.10534101928187915
+features 16 thresh 0.4 extraction compl_random
+
+
+top 1 accuracy :  0.13175675675675674
+top 5 accuracy :  0.46283783783783783
+Hit rate first :  0.537870029159715
+Mean hit rate first five :  0.577340122762785
+features 32 thresh 0.4 extraction compl_random
+
+
+top 1 accuracy :  0.15202702702702703
+top 5 accuracy :  0.5337837837837838
+Hit rate first :  0.48483507907518886
+Mean hit rate first five :  0.49449654207698746
+features 64 thresh 0.4 extraction compl_random
+
+
+top 1 accuracy :  0.26013513513513514
+top 5 accuracy :  0.6925675675675675
+Hit rate first :  0.20499430075758396
+Mean hit rate first five :  0.2021929704861499
+features 128 thresh 0.4 extraction compl_random
+
+
+top 1 accuracy :  0.2195945945945946
+top 5 accuracy :  0.6722972972972973
+Hit rate first :  0.11369567167806094
+Mean hit rate first five :  0.10900848855623677
+features 16 thresh 0.5 extraction compl_random
+
+
+top 1 accuracy :  0.13513513513513514
+top 5 accuracy :  0.5236486486486487
+Hit rate first :  0.559994532739999
+Mean hit rate first five :  0.5972508769101351
+features 32 thresh 0.5 extraction compl_random
+
+
+top 1 accuracy :  0.11486486486486487
+top 5 accuracy :  0.4527027027027027
+Hit rate first :  0.4595060391553443
+Mean hit rate first five :  0.4874277136765274
+features 64 thresh 0.5 extraction compl_random
+
+
+top 1 accuracy :  0.24662162162162163
+top 5 accuracy :  0.6554054054054054
+Hit rate first :  0.19719518906020972
+Mean hit rate first five :  0.19665715210377024
+features 128 thresh 0.5 extraction compl_random
+
+
+top 1 accuracy :  0.24662162162162163
+top 5 accuracy :  0.6385135135135135
+Hit rate first :  0.11371203805780296
+Mean hit rate first five :  0.10730233638580151
+features 16 thresh 0.6 extraction compl_random
+
+
+top 1 accuracy :  0.17567567567567569
+top 5 accuracy :  0.5033783783783784
+Hit rate first :  0.5472626224698636
+Mean hit rate first five :  0.5895493468920138
+features 32 thresh 0.6 extraction compl_random
+
+
+top 1 accuracy :  0.1554054054054054
+top 5 accuracy :  0.4797297297297297
+Hit rate first :  0.43043082467651733
+Mean hit rate first five :  0.48303497877386564
+features 64 thresh 0.6 extraction compl_random
+
+
+top 1 accuracy :  0.2635135135135135
+top 5 accuracy :  0.6824324324324325
+Hit rate first :  0.1992188490235733
+Mean hit rate first five :  0.19984782710205415
+features 128 thresh 0.6 extraction compl_random
+
+
+top 1 accuracy :  0.26013513513513514
+top 5 accuracy :  0.6824324324324325
+Hit rate first :  0.11346944683586296
+Mean hit rate first five :  0.10869757176747137
+features 16 thresh 0.7 extraction compl_random
+
+
+top 1 accuracy :  0.10810810810810811
+top 5 accuracy :  0.44594594594594594
+Hit rate first :  0.540505228328346
+Mean hit rate first five :  0.5796655266252405
+features 32 thresh 0.7 extraction compl_random
+
+
+top 1 accuracy :  0.19932432432432431
+top 5 accuracy :  0.5101351351351351
+Hit rate first :  0.454544105218152
+Mean hit rate first five :  0.47637752367483
+features 64 thresh 0.7 extraction compl_random
+
+
+top 1 accuracy :  0.24324324324324326
+top 5 accuracy :  0.6655405405405406
+Hit rate first :  0.19647720623277226
+Mean hit rate first five :  0.19663315921936766
+features 128 thresh 0.7 extraction compl_random
+
+
+top 1 accuracy :  0.2635135135135135
+top 5 accuracy :  0.6351351351351351
+Hit rate first :  0.1096857246916421
+Mean hit rate first five :  0.10563604503468318
+features 16 thresh 0.8 extraction compl_random
+
+
+top 1 accuracy :  0.11824324324324324
+top 5 accuracy :  0.4966216216216216
+Hit rate first :  0.5396392277380517
+Mean hit rate first five :  0.5821256219038189
+features 32 thresh 0.8 extraction compl_random
+
+
+top 1 accuracy :  0.16216216216216217
+top 5 accuracy :  0.5337837837837838
+Hit rate first :  0.4796380404697406
+Mean hit rate first five :  0.4891604613657559
+features 64 thresh 0.8 extraction compl_random
+
+
+top 1 accuracy :  0.20608108108108109
+top 5 accuracy :  0.6993243243243243
+Hit rate first :  0.19902638158748853
+Mean hit rate first five :  0.2006079158143322
+features 128 thresh 0.8 extraction compl_random
+
+
+top 1 accuracy :  0.2702702702702703
+top 5 accuracy :  0.6824324324324325
+Hit rate first :  0.10951966060251579
+Mean hit rate first five :  0.10393311221511518
+features 16 thresh 0.9 extraction compl_random
+
+
+top 1 accuracy :  0.13175675675675674
+top 5 accuracy :  0.46283783783783783
+Hit rate first :  0.5290902126183116
+Mean hit rate first five :  0.5683371920423732
+features 32 thresh 0.9 extraction compl_random
+
+
+top 1 accuracy :  0.16554054054054054
+top 5 accuracy :  0.47635135135135137
+Hit rate first :  0.4860990669305807
+Mean hit rate first five :  0.492057600096621
+features 64 thresh 0.9 extraction compl_random
+
+
+top 1 accuracy :  0.26013513513513514
+top 5 accuracy :  0.652027027027027
+Hit rate first :  0.19360307663992038
+Mean hit rate first five :  0.1950049213238238
+features 128 thresh 0.9 extraction compl_random
+
+
+top 1 accuracy :  0.22635135135135134
+top 5 accuracy :  0.6351351351351351
+Hit rate first :  0.10831065248235736
+Mean hit rate first five :  0.10378487055345975
