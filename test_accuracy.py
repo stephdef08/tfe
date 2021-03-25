@@ -13,12 +13,13 @@ from joblib import Parallel, delayed
 import multiprocessing
 import cv2
 import json
+from argparse import ArgumentParser, ArgumentTypeError
 
 class TestDataset(Dataset):
     def __init__(self, root='image_folder/val'):
         self.root = root
 
-        list_classes = list(range(32,49))
+        list_classes = list(range(32,47))
 
         self.dic_img = defaultdict(list)
         self.img_list = []
@@ -60,10 +61,10 @@ def extract_patches(file, extractor):
     return (mosaic, file)
 
 @torch.no_grad()
-def test():
+def test(num_features, threshold, extraction):
     r = redis.Redis(host='localhost', port='6379', db=0)
 
-    model = Model()
+    model = Model(num_features=num_features, threshold=threshold)
 
     data = TestDataset()
 
@@ -85,13 +86,15 @@ def test():
         )
     )
 
-    extractor = [utils.Extract()] * max_tensor_size
+    extractor = [utils.Extract(extraction=extraction)] * max_tensor_size
 
     counter = Counter()
 
     num_cores = multiprocessing.cpu_count()
     with Parallel(n_jobs=num_cores, prefer="threads") as parallel:
         nbr_images = 0
+        hit_first = 0
+        hit_five = 0
         for i, images in enumerate(loader):
             results = parallel(delayed(extract_patches)(f, e)
                               for f, e in zip(images, extractor))
@@ -99,6 +102,7 @@ def test():
                 nbr_images += 1
                 mosaic, name = res
                 idx_tensor = 0
+                hit_rate = Counter()
                 for j in range(len(mosaic)):
                     #add rotations of input image
                     img = transforms.Resize((224, 224))(mosaic[j])
@@ -110,10 +114,13 @@ def test():
                         out = model(tensor_gpu)
                         for k in range(max_tensor_size):
                             names = r.lrange(np.array2string(out[k]), 0, -1)
-
+                            hit = {}
                             for l in range(len(names)):
                                 js = json.loads(names[l].decode("utf-8"))
                                 counter[js["name"]] += js["value"]
+                                if js["name"] not in hit:
+                                    hit[js["name"]] = True
+                                    hit_rate[js["name"]] += 1
                         idx_tensor = 0
 
                 if idx_tensor != 0:
@@ -121,12 +128,16 @@ def test():
                     out = model(tensor_gpu)
                     for j in range(idx_tensor):
                         names = r.lrange(np.array2string(out[j]), 0, -1)
-
+                        hit = {}
                         for k in range(len(names)):
                             js = json.loads(names[k].decode("utf-8"))
                             counter[js["name"]] += js["value"]
+                            if js["name"] not in hit:
+                                hit[js["name"]] = True
+                                hit_rate[js["name"]] += 1
 
                 similar = [tmp[0] for tmp in counter.most_common(5)]
+                hit = [hit_rate[v] for v in similar]
                 counter.clear()
 
                 already_found_5 = False
@@ -145,12 +156,45 @@ def test():
                         if j == 0:
                             top_1_acc += 1
 
-                print("top 1 accuracy {}, round {}".format((top_1_acc / nbr_images), nbr_images))
-                print("top 5 accuracy {}, round {} ".format((top_5_acc / nbr_images), nbr_images))
+                if len(hit) > 0:
+                    hit_first += hit[0] / len(mosaic)
+                    hit_five += np.mean(hit) / len(mosaic)
+
+                # if len(hit) > 0:
+                #     print("top 1 accuracy {}, hit rate : {}, round {}".format((top_1_acc / nbr_images), hit[0] / len(mosaic), nbr_images))
+                # else:
+                #     print("top 1 accuracy {}, hit rate : 0, round {}".format((top_1_acc / nbr_images), nbr_images))
+                # print("top 5 accuracy {}, round {} ".format((top_5_acc / nbr_images), nbr_images))
 
 
     print("top 1 accuracy : ", top_1_acc / data.__len__())
     print("top 5 accuracy : ", top_5_acc / data.__len__())
+    print("Hit rate first : ", hit_first / data.__len__())
+    print("Mean hit rate first five : ", hit_five / data.__len__())
 
 if __name__ == "__main__":
-    test()
+    parser = ArgumentParser()
+
+    parser.add_argument(
+        '--num_features',
+        help='number of features to extract',
+        default=32,
+        type=int
+    )
+
+    parser.add_argument(
+        '--threshold',
+        help='threshold to use for binarization of features',
+        default=.5,
+        type=float
+    )
+
+    parser.add_argument(
+        '--extraction',
+        help='method used to compute the mosaic',
+        default='kmeans'
+    )
+
+    args = parser.parse_args()
+
+    test(args.num_features, args.threshold, args.extraction)

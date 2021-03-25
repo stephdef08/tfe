@@ -73,6 +73,20 @@ if __name__ == "__main__":
         default='densenet'
     )
 
+    parser.add_argument(
+        '--num_features',
+        help='number of features to extract',
+        default=32,
+        type=int
+    )
+
+    parser.add_argument(
+        '--threshold',
+        help='threshold to use for binarization of features',
+        default=.5,
+        type=float
+    )
+
     args = parser.parse_args()
 
     if args.path is None:
@@ -82,7 +96,8 @@ if __name__ == "__main__":
     model = None
 
     if args.extractor == 'densenet':
-        model = densenet.Model()
+        model = densenet.Model(num_features=args.num_features,
+                               threshold=args.threshold)
 
     if model is None:
         print("Unkown feature extractor")
@@ -100,4 +115,4 @@ if __name__ == "__main__":
     counter = retrieve_image(r, args.path, model, extractor, tensor_cpu,
                              tensor_gpu, max_tensor_size)
 
-    print(counter.most_common(100))
+    print(counter.most_common(5))

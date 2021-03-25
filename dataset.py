@@ -20,7 +20,6 @@ class DRDataset(Dataset):
                     transforms.RandomVerticalFlip(.5),
                     transforms.RandomHorizontalFlip(.5),
                     transforms.ColorJitter(brightness=0, contrast=0, saturation=1, hue=.5),
-                    transforms.Resize((32, 32)),
                     transforms.Resize((224, 224)),
                     transforms.ToTensor(),
                     transforms.Normalize(

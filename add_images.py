@@ -57,6 +57,26 @@ if __name__ == "__main__":
         default='densenet'
     )
 
+    parser.add_argument(
+        '--num_features',
+        help='number of features to extract',
+        default=32,
+        type=int
+    )
+
+    parser.add_argument(
+        '--threshold',
+        help='threshold to use for binarization of features',
+        default=.5,
+        type=float
+    )
+
+    parser.add_argument(
+        '--extraction',
+        help='method used to compute the mosaic',
+        default='kmeans'
+    )
+
     args = parser.parse_args()
 
     if args.path is None:
@@ -70,7 +90,8 @@ if __name__ == "__main__":
     model = None
 
     if args.extractor == 'densenet':
-        model = densenet.Model()
+        model = densenet.Model(num_features=args.num_features,
+                               threshold=args.threshold)
 
     if model is None:
         print("Unkown feature extractor")
@@ -92,7 +113,7 @@ if __name__ == "__main__":
     name_list = []
     counter = 0
 
-    extractor = [utils.Extract()] * max_tensor_size
+    extractor = [utils.Extract(extraction=args.extraction)] * max_tensor_size
 
     num_cores = multiprocessing.cpu_count()
     with Parallel(n_jobs=num_cores, prefer="threads") as parallel:
