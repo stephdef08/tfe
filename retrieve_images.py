@@ -87,6 +87,19 @@ if __name__ == "__main__":
         type=float
     )
 
+    parser.add_argument(
+        '--extraction',
+        help='method used to compute the mosaic',
+        default='kmeans'
+    )
+
+    parser.add_argument(
+        '--num_patches',
+        help='number of patches extracted for random extraction',
+        default=0,
+        type=int
+    )
+
     args = parser.parse_args()
 
     if args.path is None:
@@ -110,7 +123,8 @@ if __name__ == "__main__":
     tensor_cpu = torch.zeros(max_tensor_size, 3, 224, 224)
     tensor_gpu = torch.zeros(max_tensor_size, 3, 224, 224, device='cuda:0')
 
-    extractor = utils.Extract()
+    extractor = utils.Extract(extraction=args.extraction,
+                               num_patches=args.num_patches)
 
     counter = retrieve_image(r, args.path, model, extractor, tensor_cpu,
                              tensor_gpu, max_tensor_size)

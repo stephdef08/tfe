@@ -10,6 +10,8 @@ import cv2
 from utils import Extract
 import time
 
+from argparse import ArgumentParser, ArgumentTypeError
+
 
 class Model(nn.Module):
     def __init__(self, eval=True, batch_size=32, num_features=128, threshold=.5):
@@ -30,11 +32,12 @@ class Model(nn.Module):
 
         self.linear = nn.Linear(7168, num_features).cuda()
 
-        self.load_state_dict(torch.load("model" + str(num_features)))
-
         self.threshold = threshold
 
+        self.num_features = num_features
+
         if eval == True:
+            self.load_state_dict(torch.load("model" + str(num_features) + "_crop"))
             self.eval()
             self.eval = True
         else:
@@ -59,7 +62,9 @@ class Model(nn.Module):
 
                 tensor4 = norm(torch.cat((tensor2, tensor3), 1))
 
-                return self.linear(torch.cat((tensor1, tensor4), 1)).to(device='cpu')
+                ret = self.linear(torch.cat((tensor1, tensor4), 1)).to(device='cpu')
+
+                return ret
         else:
             tensor1 = self.conv_net(input)
             tensor1 = norm(self.relu(tensor1))
@@ -126,11 +131,21 @@ class Model(nn.Module):
                     for param in optimizer.param_groups:
                         param['lr'] = lr
 
-                torch.save(self.state_dict(), 'model32')
+                torch.save(self.state_dict(), 'model' + str(self.num_features) + "_crop")
 
         except KeyboardInterrupt:
             print("Interrupted")
 
 if __name__ == "__main__":
-    m = Model(False)
+    parser = ArgumentParser()
+
+    parser.add_argument(
+        '--num_features',
+        type=int,
+        help='number of features to use',
+    )
+
+    args = parser.parse_args()
+
+    m = Model(False, num_features=args.num_features)
     m.train_epochs("tmp/", 5)

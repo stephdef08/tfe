@@ -31,6 +31,13 @@ if __name__ == "__main__":
         type=int
     )
 
+    parser.add_argument(
+        '--rewrite',
+        help='if the database already exists, rewrite it',
+        default=False,
+        type=bool
+    )
+
     args = parser.parse_args()
 
     if args.path is None:
@@ -50,6 +57,6 @@ if __name__ == "__main__":
         print("Unkown feature extractor")
         exit(-1)
 
-    database = Database(args.db_name, model, load=True)
+    database = Database(args.db_name, model, load= not args.rewrite)
 
     database.add_dataset(args.path)

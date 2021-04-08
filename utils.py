@@ -8,33 +8,35 @@ import torch
 from joblib import Parallel, delayed
 
 #Replace with something more efficient
-def binarize(tensor, train=False):
-    if train == False:
-        binary_rep = np.zeros((tensor.shape[0], tensor.shape[1]))
-        binary_rep[tensor > .5] = 1
-        binary_rep[tensor <= .5] = 0
-        return binary_rep
-    else:
-        binary_rep = torch.zeros((tensor.shape[0], tensor.shape[1]), device='cuda:0')
-        binary_rep[tensor > .5] = 1
-        binary_rep[tensor <= .5] = 0
-        return binary_rep
+def binarize(tensor, threshold):
+    binary_rep = np.zeros((tensor.shape[0], tensor.shape[1]))
+    binary_rep[tensor > threshold] = 1
+    binary_rep[tensor <= threshold] = 0
+    return binary_rep
 
 class Extract:
-    def __init__(self, extraction="kmeans"):
+    def __init__(self, extraction="kmeans", num_patches=0):
         self.hist_list = np.zeros((64, 256), dtype=np.int32)
         self.hist_list_gpu = cv2.cuda_GpuMat(64, 256, 4)
         self.img_gpu = cv2.cuda_GpuMat(1024, 1024, 16)
         self.extraction = extraction
+        self.num_patches = num_patches
 
     def extract_patches(self, img):
         if self.extraction == "compl_random":
             img = cv2.resize(img, (224, 224))
-            positions = np.random.randint(0, 191, 32).reshape((16, 2))
-            sizes = np.random.randint(16, 32, 16)
+            sizes = np.random.randint(16, 223, self.num_patches)
+
+            positions = []
+
+            for s in sizes:
+                positions.append(np.random.randint(0, 224 - s))
+                positions.append(np.random.randint(0, 224 - s))
+
+            positions = np.array(positions).reshape((self.num_patches, 2))
 
             mosaic = []
-            for i in range(16):
+            for i in range(self.num_patches):
                 x, y = positions[i][0], positions[i][1]
                 size = sizes[i]
 
@@ -42,8 +44,6 @@ class Extract:
                 mosaic.append(Image.fromarray(patch))
 
             return mosaic
-
-
 
         img = cv2.resize(img, (1952, 1952)).astype(np.uint8)
 

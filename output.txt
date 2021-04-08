@@ -1,252 +1,1628 @@
-features 16 thresh 0.1
+training for 16 features
+epoch 0, batch 0, loss = 0.9986374378204346
+epoch 0, batch 100, loss = 0.541832452788949
+epoch 0, batch 200, loss = 0.43250191196799276
+epoch 0, batch 300, loss = 0.39149329721927645
+epoch 0, batch 400, loss = 0.39187789261341094
+epoch 0, batch 500, loss = 0.3539161895960569
+epoch 0, batch 600, loss = 0.3483397238701582
+epoch 0, batch 700, loss = 0.33904317900538444
+epoch 0, batch 800, loss = 0.3512362738698721
+epoch 0, batch 900, loss = 0.316916911303997
+epoch 0, batch 1000, loss = 0.34594714380800723
+epoch 0, batch 1100, loss = 0.3318369084596634
+epoch 0, batch 1200, loss = 0.31905571311712266
+epoch 0, batch 1300, loss = 0.3176633821427822
+epoch 0, batch 1400, loss = 0.31608941063284873
+epoch 0, batch 1500, loss = 0.28889647968113424
+epoch 0, batch 1600, loss = 0.29323858104646205
+epoch 0, batch 1700, loss = 0.29329485081136225
+epoch 0, batch 1800, loss = 0.31910367295145986
+epoch 0, batch 1900, loss = 0.29161092929542065
+epoch 0, batch 2000, loss = 0.31394113712012767
+epoch 0, batch 2100, loss = 0.2784451328963041
+epoch 0, batch 2200, loss = 0.2909477151185274
+epoch 0, batch 2300, loss = 0.2866859456151724
+epoch 0, batch 2400, loss = 0.2843217384070158
+epoch 0, batch 2500, loss = 0.283492870926857
+epoch 0, batch 2600, loss = 0.2670423784852028
+epoch 0, batch 2700, loss = 0.2826217065751553
+epoch 0, batch 2800, loss = 0.2652782829850912
+epoch 0, batch 2900, loss = 0.2631292433291674
+epoch 0, batch 3000, loss = 0.27174072243273256
+epoch 0, batch 3100, loss = 0.2767248883098364
+epoch 0, batch 3200, loss = 0.2654337228089571
+epoch 0, batch 3300, loss = 0.28726557455956936
+epoch 0, batch 3400, loss = 0.2605661292374134
+epoch 0, batch 3500, loss = 0.26442277550697324
+epoch 0, batch 3600, loss = 0.2808339128643274
+time for epoch 1145.3053376674652
+epoch 1, batch 0, loss = 0.25823830410435394
+epoch 1, batch 100, loss = 0.2656131177395582
+epoch 1, batch 200, loss = 0.2618486548960209
+epoch 1, batch 300, loss = 0.2527312244474888
+epoch 1, batch 400, loss = 0.23326764456927776
+epoch 1, batch 500, loss = 0.2440971291810274
+epoch 1, batch 600, loss = 0.24204995408654212
+epoch 1, batch 700, loss = 0.2569483714550734
+epoch 1, batch 800, loss = 0.24132065042853357
+epoch 1, batch 900, loss = 0.23467453718185424
+epoch 1, batch 1000, loss = 0.2331957519799471
+epoch 1, batch 1100, loss = 0.22973747208714485
+epoch 1, batch 1200, loss = 0.2373243886232376
+epoch 1, batch 1300, loss = 0.2407823148369789
+epoch 1, batch 1400, loss = 0.22366778649389743
+epoch 1, batch 1500, loss = 0.22862501189112663
+epoch 1, batch 1600, loss = 0.24169777117669583
+epoch 1, batch 1700, loss = 0.24476846598088742
+epoch 1, batch 1800, loss = 0.24728691458702087
+epoch 1, batch 1900, loss = 0.21050249047577382
+epoch 1, batch 2000, loss = 0.21173631437122822
+epoch 1, batch 2100, loss = 0.21938897110521793
+epoch 1, batch 2200, loss = 0.2267388404160738
+epoch 1, batch 2300, loss = 0.22421668641269207
+epoch 1, batch 2400, loss = 0.23216583237051963
+epoch 1, batch 2500, loss = 0.2211164566129446
+epoch 1, batch 2600, loss = 0.24025810040533543
+epoch 1, batch 2700, loss = 0.2161380933225155
+epoch 1, batch 2800, loss = 0.2306769660115242
+epoch 1, batch 2900, loss = 0.24045011200010777
+epoch 1, batch 3000, loss = 0.21860410183668136
+epoch 1, batch 3100, loss = 0.2210717774927616
+epoch 1, batch 3200, loss = 0.23243423156440257
+epoch 1, batch 3300, loss = 0.23883844390511513
+epoch 1, batch 3400, loss = 0.21820882461965085
+epoch 1, batch 3500, loss = 0.2020394080132246
+epoch 1, batch 3600, loss = 0.22672540940344332
+time for epoch 1143.4502816200256
+epoch 2, batch 0, loss = 0.19788456245048627
+epoch 2, batch 100, loss = 0.2379276256263256
+epoch 2, batch 200, loss = 0.22259533129632472
+epoch 2, batch 300, loss = 0.2081867915391922
+epoch 2, batch 400, loss = 0.20567556969821454
+epoch 2, batch 500, loss = 0.21939848564565181
+epoch 2, batch 600, loss = 0.21197423294186593
+epoch 2, batch 700, loss = 0.2214094153791666
+epoch 2, batch 800, loss = 0.21711757890880107
+epoch 2, batch 900, loss = 0.1922796808183193
+epoch 2, batch 1000, loss = 0.2250004193931818
+epoch 2, batch 1100, loss = 0.2152604315429926
+epoch 2, batch 1200, loss = 0.2077559082955122
+epoch 2, batch 1300, loss = 0.22697089463472367
+epoch 2, batch 1400, loss = 0.21731737978756427
+epoch 2, batch 1500, loss = 0.18985627345740796
+epoch 2, batch 1600, loss = 0.21496961690485478
+epoch 2, batch 1700, loss = 0.2269435625523329
+epoch 2, batch 1800, loss = 0.20318719871342183
+epoch 2, batch 1900, loss = 0.20209138438105584
+epoch 2, batch 2000, loss = 0.19746869765222072
+epoch 2, batch 2100, loss = 0.21113125324249268
+epoch 2, batch 2200, loss = 0.2015381172299385
+epoch 2, batch 2300, loss = 0.20694436773657798
+epoch 2, batch 2400, loss = 0.21132640421390533
+epoch 2, batch 2500, loss = 0.22099767960608005
+epoch 2, batch 2600, loss = 0.20267650939524173
+epoch 2, batch 2700, loss = 0.2219731030613184
+epoch 2, batch 2800, loss = 0.21062749825417995
+epoch 2, batch 2900, loss = 0.21252672113478183
+epoch 2, batch 3000, loss = 0.20144594378769398
+epoch 2, batch 3100, loss = 0.2236745407432318
+epoch 2, batch 3200, loss = 0.22689244322478772
+epoch 2, batch 3300, loss = 0.208290403932333
+epoch 2, batch 3400, loss = 0.20045944541692734
+epoch 2, batch 3500, loss = 0.19326878011226653
+epoch 2, batch 3600, loss = 0.2038269939273596
+time for epoch 1145.366298675537
+epoch 3, batch 0, loss = 0.2046405983132285
+epoch 3, batch 100, loss = 0.2176547761261463
+epoch 3, batch 200, loss = 0.22115167759358884
+epoch 3, batch 300, loss = 0.18960841834545136
+epoch 3, batch 400, loss = 0.19880034394562243
+epoch 3, batch 500, loss = 0.20261252380907535
+epoch 3, batch 600, loss = 0.20285879388451578
+epoch 3, batch 700, loss = 0.18505936361849307
+epoch 3, batch 800, loss = 0.19745547123253346
+epoch 3, batch 900, loss = 0.20593453459441663
+epoch 3, batch 1000, loss = 0.22152620755136013
+epoch 3, batch 1100, loss = 0.21615297079086304
+epoch 3, batch 1200, loss = 0.19951781392097473
+epoch 3, batch 1300, loss = 0.21538218960165978
+epoch 3, batch 1400, loss = 0.19546066753566266
+epoch 3, batch 1500, loss = 0.2111665751039982
+epoch 3, batch 1600, loss = 0.20016902409493922
+epoch 3, batch 1700, loss = 0.1938089446723461
+epoch 3, batch 1800, loss = 0.1988464340567589
+epoch 3, batch 1900, loss = 0.1966001209616661
+epoch 3, batch 2000, loss = 0.21020505383610724
+epoch 3, batch 2100, loss = 0.1831227094680071
+epoch 3, batch 2200, loss = 0.17703569032251834
+epoch 3, batch 2300, loss = 0.19929965756833554
+epoch 3, batch 2400, loss = 0.1952863284945488
+epoch 3, batch 2500, loss = 0.1814482244104147
+epoch 3, batch 2600, loss = 0.1938534589856863
+epoch 3, batch 2700, loss = 0.21482827208936214
+epoch 3, batch 2800, loss = 0.19667323924601077
+epoch 3, batch 2900, loss = 0.2122015705704689
+epoch 3, batch 3000, loss = 0.18637054048478605
+epoch 3, batch 3100, loss = 0.19424808129668236
+epoch 3, batch 3200, loss = 0.20704049475491046
+epoch 3, batch 3300, loss = 0.1849292328953743
+epoch 3, batch 3400, loss = 0.1815994118154049
+epoch 3, batch 3500, loss = 0.19262311950325967
+epoch 3, batch 3600, loss = 0.20304644867777824
+time for epoch 1141.28675198555
+epoch 4, batch 0, loss = 0.19213395787251963
+epoch 4, batch 100, loss = 0.22120843447744845
+epoch 4, batch 200, loss = 0.19565078742802144
+epoch 4, batch 300, loss = 0.191842410415411
+epoch 4, batch 400, loss = 0.18652284577488898
+epoch 4, batch 500, loss = 0.21214629009366034
+epoch 4, batch 600, loss = 0.19916767977178096
+epoch 4, batch 700, loss = 0.20038222812116147
+epoch 4, batch 800, loss = 0.19380430214107036
+epoch 4, batch 900, loss = 0.19794885575771332
+epoch 4, batch 1000, loss = 0.2078542032837868
+epoch 4, batch 1100, loss = 0.18560767047107218
+epoch 4, batch 1200, loss = 0.21208158016204834
+epoch 4, batch 1300, loss = 0.19751168631017207
+epoch 4, batch 1400, loss = 0.18594348862767218
+epoch 4, batch 1500, loss = 0.19735699400305748
+epoch 4, batch 1600, loss = 0.18906249821186066
+epoch 4, batch 1700, loss = 0.1910631873458624
+epoch 4, batch 1800, loss = 0.18977032527327536
+epoch 4, batch 1900, loss = 0.19270172350108625
+epoch 4, batch 2000, loss = 0.2057745760679245
+epoch 4, batch 2100, loss = 0.18205885753035544
+epoch 4, batch 2200, loss = 0.20644779928028584
+epoch 4, batch 2300, loss = 0.1950327581167221
+epoch 4, batch 2400, loss = 0.1995052081346512
+epoch 4, batch 2500, loss = 0.19814727567136287
+epoch 4, batch 2600, loss = 0.19123291335999965
+epoch 4, batch 2700, loss = 0.18963467605412007
+epoch 4, batch 2800, loss = 0.2143192271888256
+epoch 4, batch 2900, loss = 0.1923059630393982
+epoch 4, batch 3000, loss = 0.19284366242587567
+epoch 4, batch 3100, loss = 0.1925085373967886
+epoch 4, batch 3200, loss = 0.1942314936220646
+epoch 4, batch 3300, loss = 0.18542330265045165
+epoch 4, batch 3400, loss = 0.19513609737157822
+epoch 4, batch 3500, loss = 0.17985896699130535
+epoch 4, batch 3600, loss = 0.1972222113609314
+time for epoch 1141.6520793437958
+features 16 thresh 0.1 extraction random
 
 
-top 1 accuracy :  0.11824324324324324
-top 5 accuracy :  0.5337837837837838
-Hit rate first :  0.526189890658085
-Mean hit rate first five :  0.6060990027042953
-features 32 thresh 0.1
+db0:keys=506,expires=0,avg_ttl=0
+top 1 accuracy :  0.3239795918367347
+top 5 accuracy :  0.7321428571428571
+Hit rate first :  0.44583102616012615
+Mean hit rate first five :  0.4600030954691854
+features 16 thresh 0.2 extraction random
 
 
-top 1 accuracy :  0.13851351351351351
-top 5 accuracy :  0.48986486486486486
-Hit rate first :  0.46194674338409025
-Mean hit rate first five :  0.4852983666636228
-features 64 thresh 0.1
+db0:keys=457,expires=0,avg_ttl=0
+top 1 accuracy :  0.3239795918367347
+top 5 accuracy :  0.7040816326530612
+Hit rate first :  0.4793043202812631
+Mean hit rate first five :  0.49074913083836114
+features 16 thresh 0.3 extraction random
 
 
+db0:keys=390,expires=0,avg_ttl=0
+top 1 accuracy :  0.34438775510204084
+top 5 accuracy :  0.6454081632653061
+Hit rate first :  0.4851943722556648
+Mean hit rate first five :  0.5313995726008662
+features 16 thresh 0.4 extraction random
+
+
+db0:keys=328,expires=0,avg_ttl=0
+top 1 accuracy :  0.33418367346938777
+top 5 accuracy :  0.5918367346938775
+Hit rate first :  0.5396262625240247
+Mean hit rate first five :  0.5526791677047448
+features 16 thresh 0.5 extraction random
+
+
+db0:keys=271,expires=0,avg_ttl=0
+top 1 accuracy :  0.22959183673469388
+top 5 accuracy :  0.5127551020408163
+Hit rate first :  0.5127575382107864
+Mean hit rate first five :  0.5742921366402007
+features 16 thresh 0.6 extraction random
+
+
+db0:keys=238,expires=0,avg_ttl=0
+top 1 accuracy :  0.23469387755102042
+top 5 accuracy :  0.6377551020408163
+Hit rate first :  0.6128280634979069
+Mean hit rate first five :  0.6199778896538574
+features 16 thresh 0.7 extraction random
+
+
+db0:keys=203,expires=0,avg_ttl=0
+top 1 accuracy :  0.20408163265306123
+top 5 accuracy :  0.5867346938775511
+Hit rate first :  0.6184471119412427
+Mean hit rate first five :  0.6356577661243215
+features 16 thresh 0.8 extraction random
+
+
+db0:keys=173,expires=0,avg_ttl=0
+top 1 accuracy :  0.2193877551020408
+top 5 accuracy :  0.5994897959183674
+Hit rate first :  0.5647320884520678
+Mean hit rate first five :  0.6345503700118226
+features 16 thresh 0.9 extraction random
+
+
+db0:keys=144,expires=0,avg_ttl=0
+top 1 accuracy :  0.23979591836734693
+top 5 accuracy :  0.5688775510204082
+Hit rate first :  0.5770401393114027
+Mean hit rate first five :  0.6667544538544325
+features 16 thresh 0.1 extraction compl_random
+
+
+db0:keys=504,expires=0,avg_ttl=0
+top 1 accuracy :  0.30357142857142855
+top 5 accuracy :  0.7423469387755102
+Hit rate first :  0.42540051050546224
+Mean hit rate first five :  0.4504566351055308
+features 16 thresh 0.2 extraction compl_random
+
+
+db0:keys=455,expires=0,avg_ttl=0
+top 1 accuracy :  0.3392857142857143
+top 5 accuracy :  0.7168367346938775
+Hit rate first :  0.46115933344982474
+Mean hit rate first five :  0.4892971032069198
+features 16 thresh 0.3 extraction compl_random
+
+
+db0:keys=392,expires=0,avg_ttl=0
+top 1 accuracy :  0.29846938775510207
+top 5 accuracy :  0.701530612244898
+Hit rate first :  0.5265601615671813
+Mean hit rate first five :  0.5351062266564013
+features 16 thresh 0.4 extraction compl_random
+
+
+db0:keys=336,expires=0,avg_ttl=0
+top 1 accuracy :  0.34438775510204084
+top 5 accuracy :  0.6224489795918368
+Hit rate first :  0.5342877279195664
+Mean hit rate first five :  0.5403329849366151
+features 16 thresh 0.5 extraction compl_random
+
+
+db0:keys=267,expires=0,avg_ttl=0
 top 1 accuracy :  0.25
-top 5 accuracy :  0.6959459459459459
-Hit rate first :  0.19672625683015954
-Mean hit rate first five :  0.1967807287712329
-features 128 thresh 0.1
+top 5 accuracy :  0.5943877551020408
+Hit rate first :  0.5598587394521054
+Mean hit rate first five :  0.5980571683558953
+features 16 thresh 0.6 extraction compl_random
 
 
-top 1 accuracy :  0.22635135135135134
-top 5 accuracy :  0.6182432432432432
-Hit rate first :  0.10928888827247459
-Mean hit rate first five :  0.10409833570060381
-features 16 thresh 0.2
+db0:keys=237,expires=0,avg_ttl=0
+top 1 accuracy :  0.2576530612244898
+top 5 accuracy :  0.5612244897959183
+Hit rate first :  0.5938671969957959
+Mean hit rate first five :  0.6064636090800027
+features 16 thresh 0.7 extraction compl_random
 
 
-top 1 accuracy :  0.10472972972972973
-top 5 accuracy :  0.5135135135135135
-Hit rate first :  0.5441709551178324
-Mean hit rate first five :  0.5855466883987237
-features 32 thresh 0.2
+db0:keys=197,expires=0,avg_ttl=0
+top 1 accuracy :  0.17857142857142858
+top 5 accuracy :  0.5357142857142857
+Hit rate first :  0.5697110376848721
+Mean hit rate first five :  0.620263998483773
+features 16 thresh 0.8 extraction compl_random
 
 
-top 1 accuracy :  0.16891891891891891
-top 5 accuracy :  0.4797297297297297
-Hit rate first :  0.45673950121508955
-Mean hit rate first five :  0.46093566219054405
-features 64 thresh 0.2
+db0:keys=173,expires=0,avg_ttl=0
+top 1 accuracy :  0.2193877551020408
+top 5 accuracy :  0.5510204081632653
+Hit rate first :  0.6116190856798531
+Mean hit rate first five :  0.6420160257873146
+features 16 thresh 0.9 extraction compl_random
 
 
+db0:keys=137,expires=0,avg_ttl=0
+top 1 accuracy :  0.23469387755102042
+top 5 accuracy :  0.548469387755102
+Hit rate first :  0.589962123693707
+Mean hit rate first five :  0.6681746645591118
+features 16 thresh 0.1 extraction kmeans
+
+
+db0:keys=512,expires=0,avg_ttl=0
+top 1 accuracy :  0.3163265306122449
+top 5 accuracy :  0.7653061224489796
+Hit rate first :  0.45094440574633365
+Mean hit rate first five :  0.46178227756084755
+features 16 thresh 0.2 extraction kmeans
+
+
+db0:keys=448,expires=0,avg_ttl=0
+top 1 accuracy :  0.3112244897959184
+top 5 accuracy :  0.7117346938775511
+Hit rate first :  0.4911604259121378
+Mean hit rate first five :  0.49694603674435406
+features 16 thresh 0.3 extraction kmeans
+
+
+db0:keys=399,expires=0,avg_ttl=0
+top 1 accuracy :  0.3137755102040816
+top 5 accuracy :  0.6275510204081632
+Hit rate first :  0.5268247890035181
+Mean hit rate first five :  0.535037163457894
+features 16 thresh 0.4 extraction kmeans
+
+
+db0:keys=335,expires=0,avg_ttl=0
+top 1 accuracy :  0.34438775510204084
+top 5 accuracy :  0.625
+Hit rate first :  0.5656704561487723
+Mean hit rate first five :  0.5680738379001865
+features 16 thresh 0.5 extraction kmeans
+
+
+db0:keys=271,expires=0,avg_ttl=0
+top 1 accuracy :  0.24744897959183673
+top 5 accuracy :  0.5561224489795918
+Hit rate first :  0.537249005780966
+Mean hit rate first five :  0.5778730298839561
+features 16 thresh 0.6 extraction kmeans
+
+
+db0:keys=237,expires=0,avg_ttl=0
 top 1 accuracy :  0.25
-top 5 accuracy :  0.6756756756756757
-Hit rate first :  0.20284328389440281
-Mean hit rate first five :  0.2006533422237711
-features 128 thresh 0.2
+top 5 accuracy :  0.5535714285714286
+Hit rate first :  0.6192962280525146
+Mean hit rate first five :  0.6155699754652714
+features 16 thresh 0.7 extraction kmeans
 
 
-top 1 accuracy :  0.2635135135135135
-top 5 accuracy :  0.6655405405405406
-Hit rate first :  0.11073632153965489
-Mean hit rate first five :  0.10622093806032239
-features 16 thresh 0.3
+db0:keys=198,expires=0,avg_ttl=0
+top 1 accuracy :  0.1913265306122449
+top 5 accuracy :  0.5943877551020408
+Hit rate first :  0.6061032800263071
+Mean hit rate first five :  0.6246730820803722
+features 16 thresh 0.8 extraction kmeans
 
 
-top 1 accuracy :  0.12837837837837837
-top 5 accuracy :  0.5236486486486487
-Hit rate first :  0.5369742057465143
-Mean hit rate first five :  0.586331505010964
-features 32 thresh 0.3
+db0:keys=173,expires=0,avg_ttl=0
+top 1 accuracy :  0.22193877551020408
+top 5 accuracy :  0.5357142857142857
+Hit rate first :  0.6003326465072086
+Mean hit rate first five :  0.6413408558968835
+features 16 thresh 0.9 extraction kmeans
 
 
-top 1 accuracy :  0.15878378378378377
-top 5 accuracy :  0.5236486486486487
-Hit rate first :  0.48314542204969435
-Mean hit rate first five :  0.47913078566935996
-features 64 thresh 0.3
+db0:keys=136,expires=0,avg_ttl=0
+top 1 accuracy :  0.2423469387755102
+top 5 accuracy :  0.6020408163265306
+Hit rate first :  0.5816748656014513
+Mean hit rate first five :  0.6766393663527236
+training for 32 features
+epoch 0, batch 0, loss = 0.9962071776390076
+epoch 0, batch 100, loss = 0.5982958759367466
+epoch 0, batch 200, loss = 0.4357319602370262
+epoch 0, batch 300, loss = 0.394542640298605
+epoch 0, batch 400, loss = 0.376064083725214
+epoch 0, batch 500, loss = 0.37408666670322416
+epoch 0, batch 600, loss = 0.349746331050992
+epoch 0, batch 700, loss = 0.35102788373827937
+epoch 0, batch 800, loss = 0.3496207905560732
+epoch 0, batch 900, loss = 0.35736090384423735
+epoch 0, batch 1000, loss = 0.3378293739259243
+epoch 0, batch 1100, loss = 0.33671642415225506
+epoch 0, batch 1200, loss = 0.318012685701251
+epoch 0, batch 1300, loss = 0.3056921575963497
+epoch 0, batch 1400, loss = 0.31533192448318004
+epoch 0, batch 1500, loss = 0.306825470328331
+epoch 0, batch 1600, loss = 0.31125650241971015
+epoch 0, batch 1700, loss = 0.2751382139325142
+epoch 0, batch 1800, loss = 0.28554346449673174
+epoch 0, batch 1900, loss = 0.30293390616774557
+epoch 0, batch 2000, loss = 0.2887632615864277
+epoch 0, batch 2100, loss = 0.26235050581395625
+epoch 0, batch 2200, loss = 0.27198507852852344
+epoch 0, batch 2300, loss = 0.2726505831629038
+epoch 0, batch 2400, loss = 0.26674417704343795
+epoch 0, batch 2500, loss = 0.28124887198209764
+epoch 0, batch 2600, loss = 0.28822488397359847
+epoch 0, batch 2700, loss = 0.29479205533862113
+epoch 0, batch 2800, loss = 0.2697752370685339
+epoch 0, batch 2900, loss = 0.2544795105606317
+epoch 0, batch 3000, loss = 0.2624225891381502
+epoch 0, batch 3100, loss = 0.28255619168281554
+epoch 0, batch 3200, loss = 0.2648682978749275
+epoch 0, batch 3300, loss = 0.28833289474248885
+epoch 0, batch 3400, loss = 0.2515850459039211
+epoch 0, batch 3500, loss = 0.2688475359976292
+epoch 0, batch 3600, loss = 0.24562346272170543
+time for epoch 1142.2553217411041
+epoch 1, batch 0, loss = 0.2543422893897907
+epoch 1, batch 100, loss = 0.2361511377245188
+epoch 1, batch 200, loss = 0.23786262042820452
+epoch 1, batch 300, loss = 0.25330175742506983
+epoch 1, batch 400, loss = 0.24216575600206852
+epoch 1, batch 500, loss = 0.22426011696457862
+epoch 1, batch 600, loss = 0.24228335604071616
+epoch 1, batch 700, loss = 0.22472229443490505
+epoch 1, batch 800, loss = 0.2329536821693182
+epoch 1, batch 900, loss = 0.24126107662916182
+epoch 1, batch 1000, loss = 0.22654557824134827
+epoch 1, batch 1100, loss = 0.254369692504406
+epoch 1, batch 1200, loss = 0.22847758442163468
+epoch 1, batch 1300, loss = 0.2278013913333416
+epoch 1, batch 1400, loss = 0.2263053734600544
+epoch 1, batch 1500, loss = 0.252106240093708
+epoch 1, batch 1600, loss = 0.2546609396487474
+epoch 1, batch 1700, loss = 0.217802474796772
+epoch 1, batch 1800, loss = 0.21428213633596896
+epoch 1, batch 1900, loss = 0.2375860660523176
+epoch 1, batch 2000, loss = 0.2136580665409565
+epoch 1, batch 2100, loss = 0.2350507602840662
+epoch 1, batch 2200, loss = 0.22514196813106538
+epoch 1, batch 2300, loss = 0.23601979359984399
+epoch 1, batch 2400, loss = 0.23314229406416417
+epoch 1, batch 2500, loss = 0.22960772961378098
+epoch 1, batch 2600, loss = 0.23124237723648547
+epoch 1, batch 2700, loss = 0.2390127994865179
+epoch 1, batch 2800, loss = 0.22667170070111753
+epoch 1, batch 2900, loss = 0.2226164744794369
+epoch 1, batch 3000, loss = 0.21168500863015652
+epoch 1, batch 3100, loss = 0.24147363372147082
+epoch 1, batch 3200, loss = 0.22281878150999546
+epoch 1, batch 3300, loss = 0.22531095825135708
+epoch 1, batch 3400, loss = 0.22882812075316905
+epoch 1, batch 3500, loss = 0.22813358299434186
+epoch 1, batch 3600, loss = 0.2417249920219183
+time for epoch 1141.729530096054
+epoch 2, batch 0, loss = 0.2199937268286138
+epoch 2, batch 100, loss = 0.21392171122133732
+epoch 2, batch 200, loss = 0.2061199562996626
+epoch 2, batch 300, loss = 0.21514763988554478
+epoch 2, batch 400, loss = 0.19659110218286513
+epoch 2, batch 500, loss = 0.2246005231887102
+epoch 2, batch 600, loss = 0.2107630328834057
+epoch 2, batch 700, loss = 0.22020524770021438
+epoch 2, batch 800, loss = 0.19818700060248376
+epoch 2, batch 900, loss = 0.21032999590039253
+epoch 2, batch 1000, loss = 0.20190947368741036
+epoch 2, batch 1100, loss = 0.21350046701729297
+epoch 2, batch 1200, loss = 0.2020779250562191
+epoch 2, batch 1300, loss = 0.20961577795445918
+epoch 2, batch 1400, loss = 0.1980178416520357
+epoch 2, batch 1500, loss = 0.20684835083782674
+epoch 2, batch 1600, loss = 0.23022875025868417
+epoch 2, batch 1700, loss = 0.222414530813694
+epoch 2, batch 1800, loss = 0.20668460108339787
+epoch 2, batch 1900, loss = 0.19316876836121083
+epoch 2, batch 2000, loss = 0.21266559191048146
+epoch 2, batch 2100, loss = 0.20208447642624378
+epoch 2, batch 2200, loss = 0.19696540728211404
+epoch 2, batch 2300, loss = 0.19839366033673286
+epoch 2, batch 2400, loss = 0.18591899156570435
+epoch 2, batch 2500, loss = 0.1964523586630821
+epoch 2, batch 2600, loss = 0.19206753328442575
+epoch 2, batch 2700, loss = 0.21453347504138948
+epoch 2, batch 2800, loss = 0.2114725762605667
+epoch 2, batch 2900, loss = 0.20310319237411023
+epoch 2, batch 3000, loss = 0.21278631925582886
+epoch 2, batch 3100, loss = 0.20916399590671061
+epoch 2, batch 3200, loss = 0.19588097669184207
+epoch 2, batch 3300, loss = 0.21749374777078628
+epoch 2, batch 3400, loss = 0.2127910340577364
+epoch 2, batch 3500, loss = 0.20656867146492006
+epoch 2, batch 3600, loss = 0.1971345564723015
+time for epoch 1139.1990203857422
+epoch 3, batch 0, loss = 0.1935834564469956
+epoch 3, batch 100, loss = 0.20086399897933005
+epoch 3, batch 200, loss = 0.20301804736256598
+epoch 3, batch 300, loss = 0.21276886850595475
+epoch 3, batch 400, loss = 0.19011202931404114
+epoch 3, batch 500, loss = 0.19794604122638704
+epoch 3, batch 600, loss = 0.2061845074594021
+epoch 3, batch 700, loss = 0.19803558856248857
+epoch 3, batch 800, loss = 0.20297621473670005
+epoch 3, batch 900, loss = 0.20319220505654811
+epoch 3, batch 1000, loss = 0.1860088910907507
+epoch 3, batch 1100, loss = 0.20536837965250015
+epoch 3, batch 1200, loss = 0.18010318227112293
+epoch 3, batch 1300, loss = 0.1777592996507883
+epoch 3, batch 1400, loss = 0.19900266900658609
+epoch 3, batch 1500, loss = 0.19490032754838466
+epoch 3, batch 1600, loss = 0.20176069684326647
+epoch 3, batch 1700, loss = 0.20239745751023291
+epoch 3, batch 1800, loss = 0.2111383680254221
+epoch 3, batch 1900, loss = 0.19846335597336293
+epoch 3, batch 2000, loss = 0.19308121189475058
+epoch 3, batch 2100, loss = 0.18249052546918393
+epoch 3, batch 2200, loss = 0.1976181922107935
+epoch 3, batch 2300, loss = 0.1943776538968086
+epoch 3, batch 2400, loss = 0.18334768481552602
+epoch 3, batch 2500, loss = 0.19202636674046517
+epoch 3, batch 2600, loss = 0.19957302793860435
+epoch 3, batch 2700, loss = 0.20826287724077702
+epoch 3, batch 2800, loss = 0.19616868942975998
+epoch 3, batch 2900, loss = 0.20664826698601246
+epoch 3, batch 3000, loss = 0.19176865987479685
+epoch 3, batch 3100, loss = 0.19992846235632897
+epoch 3, batch 3200, loss = 0.19204871699213982
+epoch 3, batch 3300, loss = 0.1986293812841177
+epoch 3, batch 3400, loss = 0.18268593199551106
+epoch 3, batch 3500, loss = 0.19280158951878548
+epoch 3, batch 3600, loss = 0.18941708974540233
+time for epoch 1138.9091601371765
+epoch 4, batch 0, loss = 0.1847247959592858
+epoch 4, batch 100, loss = 0.19093551345169543
+epoch 4, batch 200, loss = 0.18268127277493476
+epoch 4, batch 300, loss = 0.20379236757755279
+epoch 4, batch 400, loss = 0.19774097852408887
+epoch 4, batch 500, loss = 0.19489475101232528
+epoch 4, batch 600, loss = 0.19321720853447913
+epoch 4, batch 700, loss = 0.18582627303898336
+epoch 4, batch 800, loss = 0.19174748331308364
+epoch 4, batch 900, loss = 0.19039254754781723
+epoch 4, batch 1000, loss = 0.2003352265059948
+epoch 4, batch 1100, loss = 0.18095325939357282
+epoch 4, batch 1200, loss = 0.19472176499664784
+epoch 4, batch 1300, loss = 0.17136790439486504
+epoch 4, batch 1400, loss = 0.19111103601753712
+epoch 4, batch 1500, loss = 0.19463867239654065
+epoch 4, batch 1600, loss = 0.1884457428753376
+epoch 4, batch 1700, loss = 0.19083083845674992
+epoch 4, batch 1800, loss = 0.2008105816692114
+epoch 4, batch 1900, loss = 0.18027708381414415
+epoch 4, batch 2000, loss = 0.20774026617407798
+epoch 4, batch 2100, loss = 0.1889072445780039
+epoch 4, batch 2200, loss = 0.18379454165697098
+epoch 4, batch 2300, loss = 0.17646965362131595
+epoch 4, batch 2400, loss = 0.18668997935950757
+epoch 4, batch 2500, loss = 0.17858417749404906
+epoch 4, batch 2600, loss = 0.19040682174265386
+epoch 4, batch 2700, loss = 0.18969609014689923
+epoch 4, batch 2800, loss = 0.20081507377326488
+epoch 4, batch 2900, loss = 0.20372461304068565
+epoch 4, batch 3000, loss = 0.2012961607426405
+epoch 4, batch 3100, loss = 0.20297020070254804
+epoch 4, batch 3200, loss = 0.19103377096354962
+epoch 4, batch 3300, loss = 0.17031088896095753
+epoch 4, batch 3400, loss = 0.2052416218817234
+epoch 4, batch 3500, loss = 0.18956423223018645
+epoch 4, batch 3600, loss = 0.18146177873015404
+time for epoch 1140.156128168106
+features 32 thresh 0.1 extraction random
 
 
-top 1 accuracy :  0.26013513513513514
-top 5 accuracy :  0.7128378378378378
-Hit rate first :  0.20699710695466306
-Mean hit rate first five :  0.2000152850588011
-features 128 thresh 0.3
+db0:keys=830,expires=0,avg_ttl=0
+top 1 accuracy :  0.2729591836734694
+top 5 accuracy :  0.7066326530612245
+Hit rate first :  0.3930406286821566
+Mean hit rate first five :  0.4089733751391118
+features 32 thresh 0.2 extraction random
 
 
-top 1 accuracy :  0.2668918918918919
-top 5 accuracy :  0.6621621621621622
-Hit rate first :  0.11434679722950354
-Mean hit rate first five :  0.10880766734336353
-features 16 thresh 0.4
+db0:keys=1063,expires=0,avg_ttl=0
+top 1 accuracy :  0.375
+top 5 accuracy :  0.6862244897959183
+Hit rate first :  0.39941564836044496
+Mean hit rate first five :  0.39367731924541016
+features 32 thresh 0.3 extraction random
 
 
-top 1 accuracy :  0.15878378378378377
-top 5 accuracy :  0.5506756756756757
-Hit rate first :  0.5240711239419525
-Mean hit rate first five :  0.5776400825733813
-features 32 thresh 0.4
+db0:keys=1284,expires=0,avg_ttl=0
+top 1 accuracy :  0.2627551020408163
+top 5 accuracy :  0.7270408163265306
+Hit rate first :  0.3899375870300446
+Mean hit rate first five :  0.40179013011642983
+features 32 thresh 0.4 extraction random
 
 
-top 1 accuracy :  0.13851351351351351
-top 5 accuracy :  0.47635135135135137
-Hit rate first :  0.45812851286051726
-Mean hit rate first five :  0.46923891635434245
-features 64 thresh 0.4
+db0:keys=1379,expires=0,avg_ttl=0
+top 1 accuracy :  0.3392857142857143
+top 5 accuracy :  0.7244897959183674
+Hit rate first :  0.40019578452084453
+Mean hit rate first five :  0.4013722266887103
+features 32 thresh 0.5 extraction random
 
 
-top 1 accuracy :  0.27364864864864863
-top 5 accuracy :  0.668918918918919
-Hit rate first :  0.20283567489366608
-Mean hit rate first five :  0.2061456876246243
-features 128 thresh 0.4
+db0:keys=1504,expires=0,avg_ttl=0
+top 1 accuracy :  0.3469387755102041
+top 5 accuracy :  0.7091836734693877
+Hit rate first :  0.4088061497135465
+Mean hit rate first five :  0.40523047702450327
+features 32 thresh 0.6 extraction random
 
 
-top 1 accuracy :  0.2702702702702703
-top 5 accuracy :  0.6216216216216216
-Hit rate first :  0.10831304086438846
-Mean hit rate first five :  0.10553393071485251
-features 16 thresh 0.5
+db0:keys=1525,expires=0,avg_ttl=0
+top 1 accuracy :  0.28061224489795916
+top 5 accuracy :  0.6811224489795918
+Hit rate first :  0.3761085659400355
+Mean hit rate first five :  0.3809192906097443
+features 32 thresh 0.7 extraction random
 
 
-top 1 accuracy :  0.1891891891891892
-top 5 accuracy :  0.5675675675675675
-Hit rate first :  0.5450357949723058
-Mean hit rate first five :  0.5724549982925445
-features 32 thresh 0.5
+db0:keys=1516,expires=0,avg_ttl=0
+top 1 accuracy :  0.2755102040816326
+top 5 accuracy :  0.6862244897959183
+Hit rate first :  0.3479223031045827
+Mean hit rate first five :  0.3533723124607451
+features 32 thresh 0.8 extraction random
 
 
-top 1 accuracy :  0.16216216216216217
-top 5 accuracy :  0.46283783783783783
-Hit rate first :  0.45559729838313073
-Mean hit rate first five :  0.4647619816619544
-features 64 thresh 0.5
+db0:keys=1523,expires=0,avg_ttl=0
+top 1 accuracy :  0.2857142857142857
+top 5 accuracy :  0.7091836734693877
+Hit rate first :  0.3420238945957212
+Mean hit rate first five :  0.3307776422711913
+features 32 thresh 0.9 extraction random
 
 
-top 1 accuracy :  0.23986486486486486
-top 5 accuracy :  0.722972972972973
-Hit rate first :  0.1979143837755405
-Mean hit rate first five :  0.20024407320040993
-features 128 thresh 0.5
+db0:keys=1428,expires=0,avg_ttl=0
+top 1 accuracy :  0.3239795918367347
+top 5 accuracy :  0.7117346938775511
+Hit rate first :  0.335441202347565
+Mean hit rate first five :  0.3469493323074813
+features 32 thresh 0.1 extraction compl_random
 
 
-top 1 accuracy :  0.2533783783783784
-top 5 accuracy :  0.668918918918919
-Hit rate first :  0.11922930285878698
-Mean hit rate first five :  0.10920943584677771
-features 16 thresh 0.6
+db0:keys=855,expires=0,avg_ttl=0
+top 1 accuracy :  0.2602040816326531
+top 5 accuracy :  0.6581632653061225
+Hit rate first :  0.40700397735482374
+Mean hit rate first five :  0.41493681181432696
+features 32 thresh 0.2 extraction compl_random
 
 
-top 1 accuracy :  0.11148648648648649
-top 5 accuracy :  0.581081081081081
-Hit rate first :  0.5309013674121698
-Mean hit rate first five :  0.5919343175001824
-features 32 thresh 0.6
+db0:keys=1077,expires=0,avg_ttl=0
+top 1 accuracy :  0.30612244897959184
+top 5 accuracy :  0.7117346938775511
+Hit rate first :  0.4016116947269759
+Mean hit rate first five :  0.40305528521565176
+features 32 thresh 0.3 extraction compl_random
 
 
-top 1 accuracy :  0.17567567567567569
-top 5 accuracy :  0.46283783783783783
-Hit rate first :  0.48308760451362487
-Mean hit rate first five :  0.49100790841304376
-features 64 thresh 0.6
+db0:keys=1274,expires=0,avg_ttl=0
+top 1 accuracy :  0.28061224489795916
+top 5 accuracy :  0.701530612244898
+Hit rate first :  0.3922619124433401
+Mean hit rate first five :  0.39521948834186205
+features 32 thresh 0.4 extraction compl_random
 
 
-top 1 accuracy :  0.23310810810810811
-top 5 accuracy :  0.668918918918919
-Hit rate first :  0.20991885232237167
-Mean hit rate first five :  0.20493063164203792
-features 128 thresh 0.6
+db0:keys=1385,expires=0,avg_ttl=0
+top 1 accuracy :  0.32142857142857145
+top 5 accuracy :  0.7244897959183674
+Hit rate first :  0.3910503196480135
+Mean hit rate first five :  0.3932127983448389
+features 32 thresh 0.5 extraction compl_random
 
 
-top 1 accuracy :  0.21283783783783783
-top 5 accuracy :  0.6621621621621622
-Hit rate first :  0.10886535192833424
-Mean hit rate first five :  0.10337376207442439
-features 16 thresh 0.7
+db0:keys=1487,expires=0,avg_ttl=0
+top 1 accuracy :  0.3112244897959184
+top 5 accuracy :  0.7346938775510204
+Hit rate first :  0.39845911919189253
+Mean hit rate first five :  0.39982096043013604
+features 32 thresh 0.6 extraction compl_random
 
 
-top 1 accuracy :  0.15202702702702703
-top 5 accuracy :  0.4560810810810811
-Hit rate first :  0.5289390664094294
-Mean hit rate first five :  0.578715769900158
-features 32 thresh 0.7
+db0:keys=1499,expires=0,avg_ttl=0
+top 1 accuracy :  0.3137755102040816
+top 5 accuracy :  0.7066326530612245
+Hit rate first :  0.3804603598004586
+Mean hit rate first five :  0.38104855767271817
+features 32 thresh 0.7 extraction compl_random
 
 
-top 1 accuracy :  0.18243243243243243
-top 5 accuracy :  0.5135135135135135
-Hit rate first :  0.44988420984479677
-Mean hit rate first five :  0.47373509026152616
-features 64 thresh 0.7
+db0:keys=1540,expires=0,avg_ttl=0
+top 1 accuracy :  0.2780612244897959
+top 5 accuracy :  0.6581632653061225
+Hit rate first :  0.35000309603128454
+Mean hit rate first five :  0.35562602255278764
+features 32 thresh 0.8 extraction compl_random
 
 
-top 1 accuracy :  0.2972972972972973
-top 5 accuracy :  0.6891891891891891
-Hit rate first :  0.20290296607512534
-Mean hit rate first five :  0.2086416708198041
-features 128 thresh 0.7
+db0:keys=1543,expires=0,avg_ttl=0
+top 1 accuracy :  0.29591836734693877
+top 5 accuracy :  0.7244897959183674
+Hit rate first :  0.3453970865919022
+Mean hit rate first five :  0.3411811437613458
+features 32 thresh 0.9 extraction compl_random
 
 
-top 1 accuracy :  0.22972972972972974
-top 5 accuracy :  0.6351351351351351
-Hit rate first :  0.1085971573117445
-Mean hit rate first five :  0.10573559902812577
-features 16 thresh 0.8
+db0:keys=1417,expires=0,avg_ttl=0
+top 1 accuracy :  0.3137755102040816
+top 5 accuracy :  0.6964285714285714
+Hit rate first :  0.33477392994490435
+Mean hit rate first five :  0.3410244043240042
+features 32 thresh 0.1 extraction kmeans
 
 
-top 1 accuracy :  0.15202702702702703
-top 5 accuracy :  0.5405405405405406
-Hit rate first :  0.5512361954397338
-Mean hit rate first five :  0.5797481445495403
-features 32 thresh 0.8
+db0:keys=847,expires=0,avg_ttl=0
+top 1 accuracy :  0.34438775510204084
+top 5 accuracy :  0.7066326530612245
+Hit rate first :  0.3605096065777118
+Mean hit rate first five :  0.3956535419837903
+features 32 thresh 0.2 extraction kmeans
 
 
-top 1 accuracy :  0.1858108108108108
-top 5 accuracy :  0.5506756756756757
-Hit rate first :  0.4833562125759959
-Mean hit rate first five :  0.4826979356015802
-features 64 thresh 0.8
+db0:keys=1081,expires=0,avg_ttl=0
+top 1 accuracy :  0.3469387755102041
+top 5 accuracy :  0.7066326530612245
+Hit rate first :  0.38477130668535486
+Mean hit rate first five :  0.3842262297202374
+features 32 thresh 0.3 extraction kmeans
 
 
-top 1 accuracy :  0.24662162162162163
-top 5 accuracy :  0.7128378378378378
-Hit rate first :  0.19897710398228546
-Mean hit rate first five :  0.20100817943041643
-features 128 thresh 0.8
+db0:keys=1287,expires=0,avg_ttl=0
+top 1 accuracy :  0.29336734693877553
+top 5 accuracy :  0.7270408163265306
+Hit rate first :  0.37662401103964843
+Mean hit rate first five :  0.3966982637110566
+features 32 thresh 0.4 extraction kmeans
 
 
-top 1 accuracy :  0.24324324324324326
-top 5 accuracy :  0.6452702702702703
-Hit rate first :  0.10896435069174795
-Mean hit rate first five :  0.10414162798871746
-features 16 thresh 0.9
+db0:keys=1364,expires=0,avg_ttl=0
+top 1 accuracy :  0.3137755102040816
+top 5 accuracy :  0.7270408163265306
+Hit rate first :  0.39768235628624216
+Mean hit rate first five :  0.40051656595963364
+features 32 thresh 0.5 extraction kmeans
 
 
-top 1 accuracy :  0.10135135135135136
-top 5 accuracy :  0.47635135135135137
-Hit rate first :  0.5289214636224447
-Mean hit rate first five :  0.5924452098510334
-features 32 thresh 0.9
+db0:keys=1473,expires=0,avg_ttl=0
+top 1 accuracy :  0.32653061224489793
+top 5 accuracy :  0.6938775510204082
+Hit rate first :  0.41396584925175567
+Mean hit rate first five :  0.4039161583696326
+features 32 thresh 0.6 extraction kmeans
 
 
-top 1 accuracy :  0.125
-top 5 accuracy :  0.48986486486486486
-Hit rate first :  0.49042823218178405
-Mean hit rate first five :  0.4743918167633039
-features 64 thresh 0.9
+db0:keys=1524,expires=0,avg_ttl=0
+top 1 accuracy :  0.2857142857142857
+top 5 accuracy :  0.6862244897959183
+Hit rate first :  0.37883785864707803
+Mean hit rate first five :  0.37607273572853905
+features 32 thresh 0.7 extraction kmeans
 
 
-top 1 accuracy :  0.2533783783783784
-top 5 accuracy :  0.6655405405405406
-Hit rate first :  0.1940494841648426
-Mean hit rate first five :  0.19344129079864478
-features 128 thresh 0.9
+db0:keys=1536,expires=0,avg_ttl=0
+top 1 accuracy :  0.2576530612244898
+top 5 accuracy :  0.6632653061224489
+Hit rate first :  0.34417182979275907
+Mean hit rate first five :  0.35527571114816653
+features 32 thresh 0.8 extraction kmeans
 
 
-top 1 accuracy :  0.24324324324324326
-top 5 accuracy :  0.6621621621621622
-Hit rate first :  0.11110985637503332
-Mean hit rate first five :  0.10583472047560419
+db0:keys=1532,expires=0,avg_ttl=0
+top 1 accuracy :  0.288265306122449
+top 5 accuracy :  0.7423469387755102
+Hit rate first :  0.33830412639298385
+Mean hit rate first five :  0.3368383143446474
+features 32 thresh 0.9 extraction kmeans
+
+
+db0:keys=1418,expires=0,avg_ttl=0
+top 1 accuracy :  0.32653061224489793
+top 5 accuracy :  0.701530612244898
+Hit rate first :  0.3486990449372797
+Mean hit rate first five :  0.34555600829242145
+training for 64 features
+epoch 0, batch 0, loss = 0.9965555667877197
+epoch 0, batch 100, loss = 0.5450641626119613
+epoch 0, batch 200, loss = 0.44415457554161547
+epoch 0, batch 300, loss = 0.40269329369068146
+epoch 0, batch 400, loss = 0.40680601447820663
+epoch 0, batch 500, loss = 0.39239742785692217
+epoch 0, batch 600, loss = 0.3495064526796341
+epoch 0, batch 700, loss = 0.333707712367177
+epoch 0, batch 800, loss = 0.3668579089641571
+epoch 0, batch 900, loss = 0.3366378316283226
+epoch 0, batch 1000, loss = 0.32065812349319456
+epoch 0, batch 1100, loss = 0.3150438720732927
+epoch 0, batch 1200, loss = 0.3375301559269428
+epoch 0, batch 1300, loss = 0.30654500804841517
+epoch 0, batch 1400, loss = 0.30501986436545847
+epoch 0, batch 1500, loss = 0.27491451919078824
+epoch 0, batch 1600, loss = 0.32399841852486133
+epoch 0, batch 1700, loss = 0.3038692018389702
+epoch 0, batch 1800, loss = 0.285439940020442
+epoch 0, batch 1900, loss = 0.30095840483903885
+epoch 0, batch 2000, loss = 0.2965692140161991
+epoch 0, batch 2100, loss = 0.27646888881921766
+epoch 0, batch 2200, loss = 0.2960727152228355
+epoch 0, batch 2300, loss = 0.3179973391443491
+epoch 0, batch 2400, loss = 0.29162741884589194
+epoch 0, batch 2500, loss = 0.2829363641142845
+epoch 0, batch 2600, loss = 0.2629007764160633
+epoch 0, batch 2700, loss = 0.28768594332039354
+epoch 0, batch 2800, loss = 0.2952951484173536
+epoch 0, batch 2900, loss = 0.2584020511060953
+epoch 0, batch 3000, loss = 0.2738107973337173
+epoch 0, batch 3100, loss = 0.2696155922859907
+epoch 0, batch 3200, loss = 0.2819407677650452
+epoch 0, batch 3300, loss = 0.28098173707723617
+epoch 0, batch 3400, loss = 0.28212710976600647
+epoch 0, batch 3500, loss = 0.27789772406220437
+epoch 0, batch 3600, loss = 0.2596412834525108
+time for epoch 1141.991064786911
+epoch 1, batch 0, loss = 0.29053348755917036
+epoch 1, batch 100, loss = 0.26454276487231254
+epoch 1, batch 200, loss = 0.2589517540484667
+epoch 1, batch 300, loss = 0.2527381104230881
+epoch 1, batch 400, loss = 0.2572827076166868
+epoch 1, batch 500, loss = 0.2520384395122528
+epoch 1, batch 600, loss = 0.24240173578262328
+epoch 1, batch 700, loss = 0.2359841673076153
+epoch 1, batch 800, loss = 0.21940101630985737
+epoch 1, batch 900, loss = 0.23373930633068085
+epoch 1, batch 1000, loss = 0.23277490198612213
+epoch 1, batch 1100, loss = 0.24502342455089093
+epoch 1, batch 1200, loss = 0.22230284787714483
+epoch 1, batch 1300, loss = 0.24698514372110367
+epoch 1, batch 1400, loss = 0.25231849431991576
+epoch 1, batch 1500, loss = 0.22635213561356068
+epoch 1, batch 1600, loss = 0.22986852869391441
+epoch 1, batch 1700, loss = 0.23140536069869996
+epoch 1, batch 1800, loss = 0.21475102700293064
+epoch 1, batch 1900, loss = 0.23143215700984002
+epoch 1, batch 2000, loss = 0.2444836624711752
+epoch 1, batch 2100, loss = 0.2211189318448305
+epoch 1, batch 2200, loss = 0.24284873209893704
+epoch 1, batch 2300, loss = 0.22042140111327171
+epoch 1, batch 2400, loss = 0.24666680239140987
+epoch 1, batch 2500, loss = 0.22719354398548602
+epoch 1, batch 2600, loss = 0.22422266848385333
+epoch 1, batch 2700, loss = 0.21802643455564977
+epoch 1, batch 2800, loss = 0.2195625116676092
+epoch 1, batch 2900, loss = 0.23271994970738888
+epoch 1, batch 3000, loss = 0.23014455877244472
+epoch 1, batch 3100, loss = 0.22385134816169738
+epoch 1, batch 3200, loss = 0.2236124987900257
+epoch 1, batch 3300, loss = 0.24394800804555417
+epoch 1, batch 3400, loss = 0.2205657460540533
+epoch 1, batch 3500, loss = 0.22468196131289006
+epoch 1, batch 3600, loss = 0.2169287347048521
+time for epoch 1142.2075402736664
+epoch 2, batch 0, loss = 0.22939881883762978
+epoch 2, batch 100, loss = 0.24521058939397336
+epoch 2, batch 200, loss = 0.20673892237246036
+epoch 2, batch 300, loss = 0.21062280729413033
+epoch 2, batch 400, loss = 0.22456345222890378
+epoch 2, batch 500, loss = 0.20840742886066438
+epoch 2, batch 600, loss = 0.2191785066574812
+epoch 2, batch 700, loss = 0.20218224674463273
+epoch 2, batch 800, loss = 0.21094116248190403
+epoch 2, batch 900, loss = 0.2046844895929098
+epoch 2, batch 1000, loss = 0.21684110760688782
+epoch 2, batch 1100, loss = 0.19835036128759384
+epoch 2, batch 1200, loss = 0.21474627092480658
+epoch 2, batch 1300, loss = 0.2243942230194807
+epoch 2, batch 1400, loss = 0.20980808690190314
+epoch 2, batch 1500, loss = 0.21036835841834545
+epoch 2, batch 1600, loss = 0.20678069785237313
+epoch 2, batch 1700, loss = 0.2016203663498163
+epoch 2, batch 1800, loss = 0.18621576935052872
+epoch 2, batch 1900, loss = 0.21288165032863618
+epoch 2, batch 2000, loss = 0.20928191274404526
+epoch 2, batch 2100, loss = 0.2142621611058712
+epoch 2, batch 2200, loss = 0.2081463185697794
+epoch 2, batch 2300, loss = 0.18663428649306296
+epoch 2, batch 2400, loss = 0.21629085898399353
+epoch 2, batch 2500, loss = 0.19715803250670433
+epoch 2, batch 2600, loss = 0.2096387480944395
+epoch 2, batch 2700, loss = 0.223480231910944
+epoch 2, batch 2800, loss = 0.21173106208443643
+epoch 2, batch 2900, loss = 0.1996912185102701
+epoch 2, batch 3000, loss = 0.1972539657354355
+epoch 2, batch 3100, loss = 0.19489248037338258
+epoch 2, batch 3200, loss = 0.18795129276812075
+epoch 2, batch 3300, loss = 0.2173115822672844
+epoch 2, batch 3400, loss = 0.19269434221088885
+epoch 2, batch 3500, loss = 0.20533722430467605
+epoch 2, batch 3600, loss = 0.2063877496123314
+time for epoch 1142.721757888794
+epoch 3, batch 0, loss = 0.20384410265329722
+epoch 3, batch 100, loss = 0.19237570635974408
+epoch 3, batch 200, loss = 0.1962719625979662
+epoch 3, batch 300, loss = 0.18486633285880089
+epoch 3, batch 400, loss = 0.19647295586764812
+epoch 3, batch 500, loss = 0.18496196925640107
+epoch 3, batch 600, loss = 0.19538493290543557
+epoch 3, batch 700, loss = 0.18489696227014066
+epoch 3, batch 800, loss = 0.18667162269353865
+epoch 3, batch 900, loss = 0.20497256137430667
+epoch 3, batch 1000, loss = 0.19920402728021144
+epoch 3, batch 1100, loss = 0.19625456519424916
+epoch 3, batch 1200, loss = 0.20499176323413848
+epoch 3, batch 1300, loss = 0.1966096317023039
+epoch 3, batch 1400, loss = 0.20214866369962692
+epoch 3, batch 1500, loss = 0.20681874960660934
+epoch 3, batch 1600, loss = 0.19456095546483992
+epoch 3, batch 1700, loss = 0.21241140455007554
+epoch 3, batch 1800, loss = 0.2008109302073717
+epoch 3, batch 1900, loss = 0.21745919838547706
+epoch 3, batch 2000, loss = 0.18847941353917122
+epoch 3, batch 2100, loss = 0.17969030186533927
+epoch 3, batch 2200, loss = 0.19953276515007018
+epoch 3, batch 2300, loss = 0.20742779202759265
+epoch 3, batch 2400, loss = 0.1959420244395733
+epoch 3, batch 2500, loss = 0.18372911728918553
+epoch 3, batch 2600, loss = 0.2065964674949646
+epoch 3, batch 2700, loss = 0.19160905413329601
+epoch 3, batch 2800, loss = 0.1931109718233347
+epoch 3, batch 2900, loss = 0.18806123688817025
+epoch 3, batch 3000, loss = 0.17975221745669842
+epoch 3, batch 3100, loss = 0.18120358385145663
+epoch 3, batch 3200, loss = 0.186785239726305
+epoch 3, batch 3300, loss = 0.201049227938056
+epoch 3, batch 3400, loss = 0.21358455412089825
+epoch 3, batch 3500, loss = 0.19416800394654274
+epoch 3, batch 3600, loss = 0.20873613968491556
+time for epoch 1144.3148090839386
+epoch 4, batch 0, loss = 0.17561239044408541
+epoch 4, batch 100, loss = 0.19939297817647458
+epoch 4, batch 200, loss = 0.2078683677315712
+epoch 4, batch 300, loss = 0.18587262004613878
+epoch 4, batch 400, loss = 0.18750904195010662
+epoch 4, batch 500, loss = 0.19008371621370315
+epoch 4, batch 600, loss = 0.207511413320899
+epoch 4, batch 700, loss = 0.18063072994351387
+epoch 4, batch 800, loss = 0.18306810021400452
+epoch 4, batch 900, loss = 0.1884849912673235
+epoch 4, batch 1000, loss = 0.18251168012619018
+epoch 4, batch 1100, loss = 0.21968678958714008
+epoch 4, batch 1200, loss = 0.18002079568803311
+epoch 4, batch 1300, loss = 0.19199957475066184
+epoch 4, batch 1400, loss = 0.19061139948666095
+epoch 4, batch 1500, loss = 0.1872199434041977
+epoch 4, batch 1600, loss = 0.17927616566419602
+epoch 4, batch 1700, loss = 0.19545973010361195
+epoch 4, batch 1800, loss = 0.19304945841431617
+epoch 4, batch 1900, loss = 0.2011454136669636
+epoch 4, batch 2000, loss = 0.1816640866547823
+epoch 4, batch 2100, loss = 0.18902979724109173
+epoch 4, batch 2200, loss = 0.18069824382662772
+epoch 4, batch 2300, loss = 0.1875793970376253
+epoch 4, batch 2400, loss = 0.18462070241570472
+epoch 4, batch 2500, loss = 0.18878417268395423
+epoch 4, batch 2600, loss = 0.19028947226703166
+epoch 4, batch 2700, loss = 0.16936760030686857
+epoch 4, batch 2800, loss = 0.1944458355009556
+epoch 4, batch 2900, loss = 0.1792321826517582
+epoch 4, batch 3000, loss = 0.17830633416771888
+epoch 4, batch 3100, loss = 0.19097765699028968
+epoch 4, batch 3200, loss = 0.17798424556851386
+epoch 4, batch 3300, loss = 0.18327339060604572
+epoch 4, batch 3400, loss = 0.16832198232412338
+epoch 4, batch 3500, loss = 0.19486778281629086
+epoch 4, batch 3600, loss = 0.1979673907905817
+time for epoch 1141.9998490810394
+features 64 thresh 0.1 extraction random
+
+
+db0:keys=2384,expires=0,avg_ttl=0
+top 1 accuracy :  0.35459183673469385
+top 5 accuracy :  0.7729591836734694
+Hit rate first :  0.2889926820793246
+Mean hit rate first five :  0.2906035931577914
+features 64 thresh 0.2 extraction random
+
+
+db0:keys=2595,expires=0,avg_ttl=0
+top 1 accuracy :  0.3852040816326531
+top 5 accuracy :  0.7678571428571429
+Hit rate first :  0.26901564687602586
+Mean hit rate first five :  0.27399550174328147
+features 64 thresh 0.3 extraction random
+
+
+db0:keys=3066,expires=0,avg_ttl=0
+top 1 accuracy :  0.3469387755102041
+top 5 accuracy :  0.7423469387755102
+Hit rate first :  0.2535699563108632
+Mean hit rate first five :  0.2540486006053036
+features 64 thresh 0.4 extraction random
+
+
+db0:keys=3559,expires=0,avg_ttl=0
+top 1 accuracy :  0.3622448979591837
+top 5 accuracy :  0.7066326530612245
+Hit rate first :  0.23026511301206368
+Mean hit rate first five :  0.23610404223479872
+features 64 thresh 0.5 extraction random
+
+
+db0:keys=4078,expires=0,avg_ttl=0
+top 1 accuracy :  0.3852040816326531
+top 5 accuracy :  0.7346938775510204
+Hit rate first :  0.20282693679648278
+Mean hit rate first five :  0.1986404800718978
+features 64 thresh 0.6 extraction random
+
+
+db0:keys=4374,expires=0,avg_ttl=0
+top 1 accuracy :  0.36989795918367346
+top 5 accuracy :  0.7193877551020408
+Hit rate first :  0.1942104618474483
+Mean hit rate first five :  0.19567015755804487
+features 64 thresh 0.7 extraction random
+
+
+db0:keys=4290,expires=0,avg_ttl=0
+top 1 accuracy :  0.34183673469387754
+top 5 accuracy :  0.6989795918367347
+Hit rate first :  0.2019830076794493
+Mean hit rate first five :  0.20386981076578245
+features 64 thresh 0.8 extraction random
+
+
+db0:keys=3853,expires=0,avg_ttl=0
+top 1 accuracy :  0.34438775510204084
+top 5 accuracy :  0.701530612244898
+Hit rate first :  0.23722638268315505
+Mean hit rate first five :  0.22815054273691593
+features 64 thresh 0.9 extraction random
+
+
+db0:keys=3303,expires=0,avg_ttl=0
+top 1 accuracy :  0.39540816326530615
+top 5 accuracy :  0.7066326530612245
+Hit rate first :  0.25319457695284336
+Mean hit rate first five :  0.2572071772082261
+features 64 thresh 0.1 extraction compl_random
+
+
+db0:keys=2358,expires=0,avg_ttl=0
+top 1 accuracy :  0.3494897959183674
+top 5 accuracy :  0.7270408163265306
+Hit rate first :  0.27549883292913796
+Mean hit rate first five :  0.29017657940784547
+features 64 thresh 0.2 extraction compl_random
+
+
+db0:keys=2641,expires=0,avg_ttl=0
+top 1 accuracy :  0.3979591836734694
+top 5 accuracy :  0.7423469387755102
+Hit rate first :  0.25382918383987346
+Mean hit rate first five :  0.27129457646469485
+features 64 thresh 0.3 extraction compl_random
+
+
+db0:keys=3137,expires=0,avg_ttl=0
+top 1 accuracy :  0.31887755102040816
+top 5 accuracy :  0.7117346938775511
+Hit rate first :  0.26215968654526395
+Mean hit rate first five :  0.2544493586532204
+features 64 thresh 0.4 extraction compl_random
+
+
+db0:keys=3618,expires=0,avg_ttl=0
+top 1 accuracy :  0.34438775510204084
+top 5 accuracy :  0.7372448979591837
+Hit rate first :  0.23122175290020455
+Mean hit rate first five :  0.22910437931697572
+features 64 thresh 0.5 extraction compl_random
+
+
+db0:keys=4124,expires=0,avg_ttl=0
+top 1 accuracy :  0.39285714285714285
+top 5 accuracy :  0.7295918367346939
+Hit rate first :  0.20267159090206968
+Mean hit rate first five :  0.2020811516548445
+features 64 thresh 0.6 extraction compl_random
+
+
+db0:keys=4371,expires=0,avg_ttl=0
+top 1 accuracy :  0.37244897959183676
+top 5 accuracy :  0.7244897959183674
+Hit rate first :  0.2050182634041198
+Mean hit rate first five :  0.20171212020863732
+features 64 thresh 0.7 extraction compl_random
+
+
+db0:keys=4321,expires=0,avg_ttl=0
+top 1 accuracy :  0.336734693877551
+top 5 accuracy :  0.7066326530612245
+Hit rate first :  0.20538296200209538
+Mean hit rate first five :  0.2021672645580255
+features 64 thresh 0.8 extraction compl_random
+
+
+db0:keys=3830,expires=0,avg_ttl=0
+top 1 accuracy :  0.3596938775510204
+top 5 accuracy :  0.6811224489795918
+Hit rate first :  0.226689269721502
+Mean hit rate first five :  0.22115726023393625
+features 64 thresh 0.9 extraction compl_random
+
+
+db0:keys=3347,expires=0,avg_ttl=0
+top 1 accuracy :  0.36989795918367346
+top 5 accuracy :  0.6887755102040817
+Hit rate first :  0.26028710271766337
+Mean hit rate first five :  0.2648932119696636
+features 64 thresh 0.1 extraction kmeans
+
+
+db0:keys=2346,expires=0,avg_ttl=0
+top 1 accuracy :  0.3877551020408163
+top 5 accuracy :  0.7372448979591837
+Hit rate first :  0.28512972262860314
+Mean hit rate first five :  0.28626238831477213
+features 64 thresh 0.2 extraction kmeans
+
+
+db0:keys=2635,expires=0,avg_ttl=0
+top 1 accuracy :  0.37244897959183676
+top 5 accuracy :  0.7474489795918368
+Hit rate first :  0.2703261277534936
+Mean hit rate first five :  0.2755665313116581
+features 64 thresh 0.3 extraction kmeans
+
+
+db0:keys=3092,expires=0,avg_ttl=0
+top 1 accuracy :  0.3086734693877551
+top 5 accuracy :  0.7168367346938775
+Hit rate first :  0.25439598519067963
+Mean hit rate first five :  0.2531654292540482
+features 64 thresh 0.4 extraction kmeans
+
+
+db0:keys=3613,expires=0,avg_ttl=0
+top 1 accuracy :  0.35459183673469385
+top 5 accuracy :  0.701530612244898
+Hit rate first :  0.23625909414922425
+Mean hit rate first five :  0.23404600438994738
+features 64 thresh 0.5 extraction kmeans
+
+
+db0:keys=4106,expires=0,avg_ttl=0
+top 1 accuracy :  0.4107142857142857
+top 5 accuracy :  0.7551020408163265
+Hit rate first :  0.20314331520808768
+Mean hit rate first five :  0.20066186219830218
+features 64 thresh 0.6 extraction kmeans
+
+
+db0:keys=4404,expires=0,avg_ttl=0
+top 1 accuracy :  0.3852040816326531
+top 5 accuracy :  0.7474489795918368
+Hit rate first :  0.20933924320657527
+Mean hit rate first five :  0.2028875246084285
+features 64 thresh 0.7 extraction kmeans
+
+
+db0:keys=4367,expires=0,avg_ttl=0
+top 1 accuracy :  0.3392857142857143
+top 5 accuracy :  0.7270408163265306
+Hit rate first :  0.20074785951165822
+Mean hit rate first five :  0.19936703743194167
+features 64 thresh 0.8 extraction kmeans
+
+
+db0:keys=3876,expires=0,avg_ttl=0
+top 1 accuracy :  0.3647959183673469
+top 5 accuracy :  0.6658163265306123
+Hit rate first :  0.22573258053107426
+Mean hit rate first five :  0.21761418448311062
+features 64 thresh 0.9 extraction kmeans
+
+
+db0:keys=3337,expires=0,avg_ttl=0
+top 1 accuracy :  0.35459183673469385
+top 5 accuracy :  0.6836734693877551
+Hit rate first :  0.2518905182513383
+Mean hit rate first five :  0.2605471989281462
+training for 128 features
+epoch 0, batch 0, loss = 0.994911789894104
+epoch 0, batch 100, loss = 0.5873207087814808
+epoch 0, batch 200, loss = 0.464030804336071
+epoch 0, batch 300, loss = 0.43104658141732216
+epoch 0, batch 400, loss = 0.4177227918803692
+epoch 0, batch 500, loss = 0.41813961446285247
+epoch 0, batch 600, loss = 0.37630303755402567
+epoch 0, batch 700, loss = 0.372662146538496
+epoch 0, batch 800, loss = 0.3977778907865286
+epoch 0, batch 900, loss = 0.3473728183656931
+epoch 0, batch 1000, loss = 0.3317397980391979
+epoch 0, batch 1100, loss = 0.3311229348927736
+epoch 0, batch 1200, loss = 0.33983497239649296
+epoch 0, batch 1300, loss = 0.30309390112757684
+epoch 0, batch 1400, loss = 0.3121429865807295
+epoch 0, batch 1500, loss = 0.3214165662229061
+epoch 0, batch 1600, loss = 0.3132883246243
+epoch 0, batch 1700, loss = 0.3097286833822727
+epoch 0, batch 1800, loss = 0.32763522878289225
+epoch 0, batch 1900, loss = 0.31145013600587845
+epoch 0, batch 2000, loss = 0.3006656239926815
+epoch 0, batch 2100, loss = 0.277959775775671
+epoch 0, batch 2200, loss = 0.3037895429134369
+epoch 0, batch 2300, loss = 0.3035508266091347
+epoch 0, batch 2400, loss = 0.3226805552840233
+epoch 0, batch 2500, loss = 0.2977904343605042
+epoch 0, batch 2600, loss = 0.28249542392790317
+epoch 0, batch 2700, loss = 0.3021294882148504
+epoch 0, batch 2800, loss = 0.3078627806156874
+epoch 0, batch 2900, loss = 0.2722817550599575
+epoch 0, batch 3000, loss = 0.28023873329162596
+epoch 0, batch 3100, loss = 0.28633426189422606
+epoch 0, batch 3200, loss = 0.3037233081459999
+epoch 0, batch 3300, loss = 0.2735380475223064
+epoch 0, batch 3400, loss = 0.266290395706892
+epoch 0, batch 3500, loss = 0.2654753073304892
+epoch 0, batch 3600, loss = 0.2703794579207897
+time for epoch 1142.606681585312
+epoch 1, batch 0, loss = 0.2376094955850292
+epoch 1, batch 100, loss = 0.24904284358024598
+epoch 1, batch 200, loss = 0.27590964548289776
+epoch 1, batch 300, loss = 0.26989144906401635
+epoch 1, batch 400, loss = 0.23789513148367405
+epoch 1, batch 500, loss = 0.24519382625818253
+epoch 1, batch 600, loss = 0.23082177132368087
+epoch 1, batch 700, loss = 0.23656573966145517
+epoch 1, batch 800, loss = 0.2386300104856491
+epoch 1, batch 900, loss = 0.2370951423048973
+epoch 1, batch 1000, loss = 0.25094926565885545
+epoch 1, batch 1100, loss = 0.24271390728652478
+epoch 1, batch 1200, loss = 0.24132637709379196
+epoch 1, batch 1300, loss = 0.24520996473729612
+epoch 1, batch 1400, loss = 0.24241739496588707
+epoch 1, batch 1500, loss = 0.24018910236656665
+epoch 1, batch 1600, loss = 0.21954264886677266
+epoch 1, batch 1700, loss = 0.21151546098291873
+epoch 1, batch 1800, loss = 0.23193902418017387
+epoch 1, batch 1900, loss = 0.24860891506075858
+epoch 1, batch 2000, loss = 0.22472757704555987
+epoch 1, batch 2100, loss = 0.21821743592619897
+epoch 1, batch 2200, loss = 0.2283664432168007
+epoch 1, batch 2300, loss = 0.22816104255616665
+epoch 1, batch 2400, loss = 0.22218368284404277
+epoch 1, batch 2500, loss = 0.22833856359124183
+epoch 1, batch 2600, loss = 0.2327224163711071
+epoch 1, batch 2700, loss = 0.23701554961502552
+epoch 1, batch 2800, loss = 0.23173675075173378
+epoch 1, batch 2900, loss = 0.23990845039486886
+epoch 1, batch 3000, loss = 0.2426588451862335
+epoch 1, batch 3100, loss = 0.23062518931925297
+epoch 1, batch 3200, loss = 0.2334396794438362
+epoch 1, batch 3300, loss = 0.2291080989688635
+epoch 1, batch 3400, loss = 0.21451860725879668
+epoch 1, batch 3500, loss = 0.22072001323103904
+epoch 1, batch 3600, loss = 0.23153107583522797
+time for epoch 1138.210200548172
+epoch 2, batch 0, loss = 0.22476587857346278
+epoch 2, batch 100, loss = 0.21650347910821438
+epoch 2, batch 200, loss = 0.2161923561990261
+epoch 2, batch 300, loss = 0.21771913394331932
+epoch 2, batch 400, loss = 0.24898207277059556
+epoch 2, batch 500, loss = 0.21521658144891262
+epoch 2, batch 600, loss = 0.211392642557621
+epoch 2, batch 700, loss = 0.21207465626299382
+epoch 2, batch 800, loss = 0.22660570316016673
+epoch 2, batch 900, loss = 0.20233311444520952
+epoch 2, batch 1000, loss = 0.20571977727115154
+epoch 2, batch 1100, loss = 0.2052854700386524
+epoch 2, batch 1200, loss = 0.22944828562438488
+epoch 2, batch 1300, loss = 0.22731901049613953
+epoch 2, batch 1400, loss = 0.2031262357532978
+epoch 2, batch 1500, loss = 0.21756430730223655
+epoch 2, batch 1600, loss = 0.2104275917261839
+epoch 2, batch 1700, loss = 0.18551682010293008
+epoch 2, batch 1800, loss = 0.2071324683725834
+epoch 2, batch 1900, loss = 0.21684502974152564
+epoch 2, batch 2000, loss = 0.2213337515294552
+epoch 2, batch 2100, loss = 0.21334130331873893
+epoch 2, batch 2200, loss = 0.20073576554656028
+epoch 2, batch 2300, loss = 0.18879163973033428
+epoch 2, batch 2400, loss = 0.20158940881490708
+epoch 2, batch 2500, loss = 0.21359134823083878
+epoch 2, batch 2600, loss = 0.2054052460193634
+epoch 2, batch 2700, loss = 0.21030266895890237
+epoch 2, batch 2800, loss = 0.2243002801388502
+epoch 2, batch 2900, loss = 0.18098715752363204
+epoch 2, batch 3000, loss = 0.2030635217577219
+epoch 2, batch 3100, loss = 0.21849086686968802
+epoch 2, batch 3200, loss = 0.1984814391285181
+epoch 2, batch 3300, loss = 0.2007430075109005
+epoch 2, batch 3400, loss = 0.20227730385959147
+epoch 2, batch 3500, loss = 0.20142120622098447
+epoch 2, batch 3600, loss = 0.22790953636169434
+time for epoch 1141.0671293735504
+epoch 3, batch 0, loss = 0.18883907190851262
+epoch 3, batch 100, loss = 0.19171184301376343
+epoch 3, batch 200, loss = 0.21531207725405693
+epoch 3, batch 300, loss = 0.1982245171070099
+epoch 3, batch 400, loss = 0.19507270224392415
+epoch 3, batch 500, loss = 0.20188252113759517
+epoch 3, batch 600, loss = 0.20926316529512407
+epoch 3, batch 700, loss = 0.21144852861762048
+epoch 3, batch 800, loss = 0.19964093580842018
+epoch 3, batch 900, loss = 0.18515342727303505
+epoch 3, batch 1000, loss = 0.18908098161220552
+epoch 3, batch 1100, loss = 0.18691494815051557
+epoch 3, batch 1200, loss = 0.20344347923994063
+epoch 3, batch 1300, loss = 0.21261171720921992
+epoch 3, batch 1400, loss = 0.18510832533240318
+epoch 3, batch 1500, loss = 0.19072367183864117
+epoch 3, batch 1600, loss = 0.194191629961133
+epoch 3, batch 1700, loss = 0.18814810663461684
+epoch 3, batch 1800, loss = 0.19157360203564167
+epoch 3, batch 1900, loss = 0.20536786049604416
+epoch 3, batch 2000, loss = 0.1834539957344532
+epoch 3, batch 2100, loss = 0.18986366994678974
+epoch 3, batch 2200, loss = 0.20131178975105285
+epoch 3, batch 2300, loss = 0.21249574333429336
+epoch 3, batch 2400, loss = 0.1938726006448269
+epoch 3, batch 2500, loss = 0.19589374378323554
+epoch 3, batch 2600, loss = 0.19789043255150318
+epoch 3, batch 2700, loss = 0.19233592867851257
+epoch 3, batch 2800, loss = 0.1952225124835968
+epoch 3, batch 2900, loss = 0.17861118644475937
+epoch 3, batch 3000, loss = 0.18884311355650424
+epoch 3, batch 3100, loss = 0.17346464447677135
+epoch 3, batch 3200, loss = 0.18197920501232148
+epoch 3, batch 3300, loss = 0.18784372076392175
+epoch 3, batch 3400, loss = 0.19006856925785542
+epoch 3, batch 3500, loss = 0.18007702492177485
+epoch 3, batch 3600, loss = 0.19381458193063736
+time for epoch 1140.477962732315
+epoch 4, batch 0, loss = 0.1860204378293978
+epoch 4, batch 100, loss = 0.17682598903775215
+epoch 4, batch 200, loss = 0.1849966885894537
+epoch 4, batch 300, loss = 0.17833212316036223
+epoch 4, batch 400, loss = 0.19664988063275815
+epoch 4, batch 500, loss = 0.20679892770946026
+epoch 4, batch 600, loss = 0.19604798153042793
+epoch 4, batch 700, loss = 0.19098553761839868
+epoch 4, batch 800, loss = 0.16118110761046409
+epoch 4, batch 900, loss = 0.19514460399746894
+epoch 4, batch 1000, loss = 0.19326065942645074
+epoch 4, batch 1100, loss = 0.1962450374662876
+epoch 4, batch 1200, loss = 0.1948512749373913
+epoch 4, batch 1300, loss = 0.20101343110203743
+epoch 4, batch 1400, loss = 0.1890675500035286
+epoch 4, batch 1500, loss = 0.1817954982817173
+epoch 4, batch 1600, loss = 0.1723487676680088
+epoch 4, batch 1700, loss = 0.19104334995150565
+epoch 4, batch 1800, loss = 0.19900240398943425
+epoch 4, batch 1900, loss = 0.19359223693609237
+epoch 4, batch 2000, loss = 0.18409650437533856
+epoch 4, batch 2100, loss = 0.1893748615682125
+epoch 4, batch 2200, loss = 0.190791799724102
+epoch 4, batch 2300, loss = 0.19686829864978792
+epoch 4, batch 2400, loss = 0.18073422960937024
+epoch 4, batch 2500, loss = 0.20416776165366174
+epoch 4, batch 2600, loss = 0.1877569544315338
+epoch 4, batch 2700, loss = 0.1500529533624649
+epoch 4, batch 2800, loss = 0.18707058995962142
+epoch 4, batch 2900, loss = 0.18875852264463902
+epoch 4, batch 3000, loss = 0.19443278446793555
+epoch 4, batch 3100, loss = 0.1726476103067398
+epoch 4, batch 3200, loss = 0.19367239028215408
+epoch 4, batch 3300, loss = 0.19915081202983856
+epoch 4, batch 3400, loss = 0.19229275576770305
+epoch 4, batch 3500, loss = 0.1960806803405285
+epoch 4, batch 3600, loss = 0.17946861520409585
+time for epoch 1138.4914000034332
+features 128 thresh 0.1 extraction random
+
+
+db0:keys=11435,expires=0,avg_ttl=0
+top 1 accuracy :  0.3596938775510204
+top 5 accuracy :  0.7244897959183674
+Hit rate first :  0.1270080431922118
+Mean hit rate first five :  0.12133088030537495
+features 128 thresh 0.2 extraction random
+
+
+db0:keys=9159,expires=0,avg_ttl=0
+top 1 accuracy :  0.35459183673469385
+top 5 accuracy :  0.6989795918367347
+Hit rate first :  0.1403979316013248
+Mean hit rate first five :  0.1354842773671901
+features 128 thresh 0.3 extraction random
+
+
+db0:keys=8458,expires=0,avg_ttl=0
+top 1 accuracy :  0.35459183673469385
+top 5 accuracy :  0.6352040816326531
+Hit rate first :  0.15667273644856664
+Mean hit rate first five :  0.14649255295343844
+features 128 thresh 0.4 extraction random
+
+
+db0:keys=8347,expires=0,avg_ttl=0
+top 1 accuracy :  0.37755102040816324
+top 5 accuracy :  0.6607142857142857
+Hit rate first :  0.13379501769909527
+Mean hit rate first five :  0.1284182270829569
+features 128 thresh 0.5 extraction random
+
+
+db0:keys=8638,expires=0,avg_ttl=0
+top 1 accuracy :  0.29846938775510207
+top 5 accuracy :  0.6352040816326531
+Hit rate first :  0.128050462437159
+Mean hit rate first five :  0.123636395755926
+features 128 thresh 0.6 extraction random
+
+
+db0:keys=8042,expires=0,avg_ttl=0
+top 1 accuracy :  0.29591836734693877
+top 5 accuracy :  0.6505102040816326
+Hit rate first :  0.13528211144804234
+Mean hit rate first five :  0.12587017992376126
+features 128 thresh 0.7 extraction random
+
+
+db0:keys=6285,expires=0,avg_ttl=0
+top 1 accuracy :  0.35459183673469385
+top 5 accuracy :  0.6836734693877551
+Hit rate first :  0.15791960259736212
+Mean hit rate first five :  0.15461549320636103
+features 128 thresh 0.8 extraction random
+
+
+db0:keys=5002,expires=0,avg_ttl=0
+top 1 accuracy :  0.30612244897959184
+top 5 accuracy :  0.701530612244898
+Hit rate first :  0.20541415907447094
+Mean hit rate first five :  0.20411689759857407
+features 128 thresh 0.9 extraction random
+
+
+db0:keys=4221,expires=0,avg_ttl=0
+top 1 accuracy :  0.3494897959183674
+top 5 accuracy :  0.6709183673469388
+Hit rate first :  0.24678584849532514
+Mean hit rate first five :  0.24853740398573795
+features 128 thresh 0.1 extraction compl_random
+
+
+db0:keys=11277,expires=0,avg_ttl=0
+top 1 accuracy :  0.3903061224489796
+top 5 accuracy :  0.7321428571428571
+Hit rate first :  0.1241612921507267
+Mean hit rate first five :  0.12119359151606457
+features 128 thresh 0.2 extraction compl_random
+
+
+db0:keys=9183,expires=0,avg_ttl=0
+top 1 accuracy :  0.3622448979591837
+top 5 accuracy :  0.7040816326530612
+Hit rate first :  0.14689255317960584
+Mean hit rate first five :  0.140097879068656
+features 128 thresh 0.3 extraction compl_random
+
+
+db0:keys=8523,expires=0,avg_ttl=0
+top 1 accuracy :  0.3979591836734694
+top 5 accuracy :  0.6887755102040817
+Hit rate first :  0.14930793400831802
+Mean hit rate first five :  0.14879319730943733
+features 128 thresh 0.4 extraction compl_random
+
+
+db0:keys=8412,expires=0,avg_ttl=0
+top 1 accuracy :  0.3647959183673469
+top 5 accuracy :  0.6377551020408163
+Hit rate first :  0.13983564060308326
+Mean hit rate first five :  0.1334051646219573
+features 128 thresh 0.5 extraction compl_random
+
+
+db0:keys=8589,expires=0,avg_ttl=0
+top 1 accuracy :  0.32908163265306123
+top 5 accuracy :  0.6352040816326531
+Hit rate first :  0.12783934504611297
+Mean hit rate first five :  0.12251935127385498
+features 128 thresh 0.6 extraction compl_random
+
+
+db0:keys=7983,expires=0,avg_ttl=0
+top 1 accuracy :  0.30612244897959184
+top 5 accuracy :  0.701530612244898
+Hit rate first :  0.13042604252666246
+Mean hit rate first five :  0.1243735691341577
+features 128 thresh 0.7 extraction compl_random
+
+
+db0:keys=6250,expires=0,avg_ttl=0
+top 1 accuracy :  0.3392857142857143
+top 5 accuracy :  0.6760204081632653
+Hit rate first :  0.16215293634129052
+Mean hit rate first five :  0.15741731888297425
+features 128 thresh 0.8 extraction compl_random
+
+
+db0:keys=5050,expires=0,avg_ttl=0
+top 1 accuracy :  0.34438775510204084
+top 5 accuracy :  0.7168367346938775
+Hit rate first :  0.19476630516358642
+Mean hit rate first five :  0.19682962526983455
+features 128 thresh 0.9 extraction compl_random
+
+
+db0:keys=4236,expires=0,avg_ttl=0
+top 1 accuracy :  0.33163265306122447
+top 5 accuracy :  0.6428571428571429
+Hit rate first :  0.24526795235853596
+Mean hit rate first five :  0.247341198905049
+features 128 thresh 0.1 extraction kmeans
+
+
+db0:keys=11388,expires=0,avg_ttl=0
+top 1 accuracy :  0.3826530612244898
+top 5 accuracy :  0.7321428571428571
+Hit rate first :  0.12472554610356242
+Mean hit rate first five :  0.11696074457014052
+features 128 thresh 0.2 extraction kmeans
+
+
+db0:keys=9120,expires=0,avg_ttl=0
+top 1 accuracy :  0.37755102040816324
+top 5 accuracy :  0.7142857142857143
+Hit rate first :  0.14338613536899272
+Mean hit rate first five :  0.13830295216866081
+features 128 thresh 0.3 extraction kmeans
+
+
+db0:keys=8715,expires=0,avg_ttl=0
+top 1 accuracy :  0.39285714285714285
+top 5 accuracy :  0.6632653061224489
+Hit rate first :  0.1553347979756889
+Mean hit rate first five :  0.1554932555343975
+features 128 thresh 0.4 extraction kmeans
+
+
+db0:keys=8406,expires=0,avg_ttl=0
+top 1 accuracy :  0.35459183673469385
+top 5 accuracy :  0.6479591836734694
+Hit rate first :  0.1316596701513794
+Mean hit rate first five :  0.12805965942440606
+features 128 thresh 0.5 extraction kmeans
+
+
+db0:keys=8526,expires=0,avg_ttl=0
+top 1 accuracy :  0.28316326530612246
+top 5 accuracy :  0.6479591836734694
+Hit rate first :  0.12281490434394488
+Mean hit rate first five :  0.11987205724240145
+features 128 thresh 0.6 extraction kmeans
+
+
+db0:keys=7902,expires=0,avg_ttl=0
+top 1 accuracy :  0.3010204081632653
+top 5 accuracy :  0.6530612244897959
+Hit rate first :  0.13638455794577056
+Mean hit rate first five :  0.12653515271623209
+features 128 thresh 0.7 extraction kmeans
+
+
+db0:keys=6277,expires=0,avg_ttl=0
+top 1 accuracy :  0.35459183673469385
+top 5 accuracy :  0.7091836734693877
+Hit rate first :  0.15770410432449603
+Mean hit rate first five :  0.1591382861492483
+features 128 thresh 0.8 extraction kmeans
+
+
+db0:keys=4937,expires=0,avg_ttl=0
+top 1 accuracy :  0.3494897959183674
+top 5 accuracy :  0.7244897959183674
+Hit rate first :  0.19518022229115223
+Mean hit rate first five :  0.19530725526939613
+features 128 thresh 0.9 extraction kmeans
+
+
+db0:keys=4172,expires=0,avg_ttl=0
+top 1 accuracy :  0.3494897959183674
+top 5 accuracy :  0.6326530612244898
+Hit rate first :  0.2529484331383785
+Mean hit rate first five :  0.24802776544770333

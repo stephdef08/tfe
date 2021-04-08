@@ -1,0 +1,20 @@
+adding for 16 features
+top 1 accuracy :  0.043521266073194856
+top 5 accuracy :  0.10484668644906034
+Hit rate first :  0.35654114891253
+Mean hit rate first five :  0.3679507420081964
+adding for 32 features
+top 1 accuracy :  0.08704253214638971
+top 5 accuracy :  0.218595450049456
+Hit rate first :  0.292566088666873
+Mean hit rate first five :  0.32419030913654506
+adding for 64 features
+top 1 accuracy :  0.08605341246290801
+top 5 accuracy :  0.22255192878338279
+Hit rate first :  0.13339445172490655
+Mean hit rate first five :  0.15318473888550369
+adding for 128 features
+top 1 accuracy :  0.13550939663699307
+top 5 accuracy :  0.35509396636993074
+Hit rate first :  0.1112228733792076
+Mean hit rate first five :  0.11522541508221751

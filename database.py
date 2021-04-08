@@ -58,9 +58,14 @@ class Database:
         _, labels = self.index.search(out.numpy(), self.nrt_neigh)
 
         with open(self.csv_file, "r") as file:
-            names = [n for i, n in enumerate(file.readlines()) if i in labels[0]]
+            lines = file.readlines()
 
-        return names
+            names = []
+
+            for l in labels[0]:
+                names.append(lines[l])
+
+        return  names
 
     def save(self):
         faiss.write_index(self.index, self.name)

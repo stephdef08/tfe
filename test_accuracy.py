@@ -19,7 +19,12 @@ class TestDataset(Dataset):
     def __init__(self, root='image_folder/val'):
         self.root = root
 
-        list_classes = list(range(67))
+        list_classes = ["ulb_anapath_lba2/", "ulb_anapath_lba3/", "ulb_anapath_lba4/",
+                        "ulb_anapath_lba5/", "ulb_anapath_lba6/", "ulb_anapath_lba7/",
+                        "ulb_anapath_lba8/", "ulg_bonemarrow0/", "ulg_bonemarrow1/",
+                        "ulg_bonemarrow2/", "ulg_bonemarrow3/", "ulg_bonemarrow4/",
+                        "ulg_bonemarrow5/", "ulg_bonemarrow6/", "ulg_bonemarrow7/",
+                        "ulg_lbtd2_chimio_necrose0/", "ulg_lbtd2_chimio_necrose1/"]
 
         self.dic_img = defaultdict(list)
         self.img_list = []
@@ -61,7 +66,7 @@ def extract_patches(file, extractor):
     return (mosaic, file)
 
 @torch.no_grad()
-def test(num_features, threshold, extraction):
+def test(num_features, threshold, extraction, num_patches):
     r = redis.Redis(host='localhost', port='6379', db=0)
 
     model = Model(num_features=num_features, threshold=threshold)
@@ -86,7 +91,8 @@ def test(num_features, threshold, extraction):
         )
     )
 
-    extractor = [utils.Extract(extraction=extraction)] * max_tensor_size
+    extractor = [utils.Extract(extraction=extraction,
+                               num_patches=num_patches)] * max_tensor_size
 
     counter = Counter()
 
@@ -195,6 +201,13 @@ if __name__ == "__main__":
         default='kmeans'
     )
 
+    parser.add_argument(
+        '--num_patches',
+        help='number of patches extracted for random extraction',
+        default=0,
+        type=int
+    )
+
     args = parser.parse_args()
 
-    test(args.num_features, args.threshold, args.extraction)
+    test(args.num_features, args.threshold, args.extraction, args.num_patches)

@@ -77,6 +77,13 @@ if __name__ == "__main__":
         default='kmeans'
     )
 
+    parser.add_argument(
+        '--num_patches',
+        help='number of patches extracted for random extraction',
+        default=0,
+        type=int
+    )
+
     args = parser.parse_args()
 
     if args.path is None:
@@ -113,7 +120,8 @@ if __name__ == "__main__":
     name_list = []
     counter = 0
 
-    extractor = [utils.Extract(extraction=args.extraction)] * max_tensor_size
+    extractor = [utils.Extract(extraction=args.extraction,
+                               num_patches=args.num_patches)] * max_tensor_size
 
     num_cores = multiprocessing.cpu_count()
     with Parallel(n_jobs=num_cores, prefer="threads") as parallel:
