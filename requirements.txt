@@ -1,3 +1,5 @@
+Tested with python3.9
+
 redis-py
 pillow
 torch with cuda support
