@@ -52,7 +52,7 @@ The redis server that was used to index the images must be running
 ```bash
 python retrieve_images.py [arguments]
 ```
-
+with the following arguments
 - --path (required): path to the query image
 - --extractor (default: densenet): densenet
 - --num_features (default: 32): the size of the last linear layer (i.e. the number of features)
@@ -67,7 +67,7 @@ The redis server that was used to index the images must be running
 ```bash
 python test_accuracy.py [arguments]
 ```
-
+with the following arguments
 - --path (required): path to the query images
 - --num_features (default: 32): the size of the last linear layer (i.e. the number of features)
 - --threshold (default: 0.5): threshold value that is used to binarise the features
