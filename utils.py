@@ -1,7 +1,6 @@
 import numpy as np
 import cv2
 from PIL import Image
-import KMeansRex
 import time
 import sys
 import torch

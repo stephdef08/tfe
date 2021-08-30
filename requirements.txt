@@ -1,0 +1,8 @@
+redis-py
+pillow
+torch with cuda support
+torchvision
+numpy
+opencv
+joblib
+scikit-learn
