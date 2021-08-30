@@ -4,7 +4,6 @@ from torchvision import transforms
 import numpy as np
 from torch.utils.data import Dataset
 from PIL import Image
-import cv2
 import pickle
 from collections import defaultdict
 
@@ -19,8 +18,8 @@ class DRDataset(Dataset):
                 [
                     transforms.RandomVerticalFlip(.5),
                     transforms.RandomHorizontalFlip(.5),
-                    transforms.ColorJitter(brightness=0, contrast=0, saturation=1, hue=.5),
-                    transforms.RandomResizedCrop(224),
+                    transforms.ColorJitter(brightness=0, contrast=0, saturation=.2, hue=.1),
+                    transforms.RandomResizedCrop(224, scale=(.8,1)),
                     transforms.ToTensor(),
                     transforms.Normalize(
                         mean=[0.485, 0.456, 0.406],

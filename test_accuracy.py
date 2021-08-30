@@ -16,20 +16,13 @@ import json
 from argparse import ArgumentParser, ArgumentTypeError
 
 class TestDataset(Dataset):
-    def __init__(self, root='image_folder/val'):
+    def __init__(self, root='patch/val'):
         self.root = root
-
-        list_classes = ["ulb_anapath_lba2/", "ulb_anapath_lba3/", "ulb_anapath_lba4/",
-                        "ulb_anapath_lba5/", "ulb_anapath_lba6/", "ulb_anapath_lba7/",
-                        "ulb_anapath_lba8/", "ulg_bonemarrow0/", "ulg_bonemarrow1/",
-                        "ulg_bonemarrow2/", "ulg_bonemarrow3/", "ulg_bonemarrow4/",
-                        "ulg_bonemarrow5/", "ulg_bonemarrow6/", "ulg_bonemarrow7/",
-                        "ulg_lbtd2_chimio_necrose0/", "ulg_lbtd2_chimio_necrose1/"]
 
         self.dic_img = defaultdict(list)
         self.img_list = []
 
-        for i in list_classes:
+        for i in os.listdir(root):
             for img in os.listdir(os.path.join(root, str(i))):
                 self.dic_img[i].append(os.path.join(root, str(i), img))
 
@@ -66,12 +59,12 @@ def extract_patches(file, extractor):
     return (mosaic, file)
 
 @torch.no_grad()
-def test(num_features, threshold, extraction, num_patches):
+def test(path, num_features, threshold, extraction, num_patches, weights):
     r = redis.Redis(host='localhost', port='6379', db=0)
 
-    model = Model(num_features=num_features, threshold=threshold)
+    model = Model(num_features=num_features, threshold=threshold, weights=weights)
 
-    data = TestDataset()
+    data = TestDataset(path)
 
     max_tensor_size = 32
     loader = torch.utils.data.DataLoader(data, batch_size=max_tensor_size,
@@ -84,14 +77,7 @@ def test(num_features, threshold, extraction, num_patches):
     tensor_gpu = torch.zeros(max_tensor_size, 3, 224, 224, device='cuda:0')
     i = 0
 
-    transform = torch.nn.Sequential(
-        transforms.Normalize(
-            mean=[0.485, 0.456, 0.406],
-            std=[0.229, 0.224, 0.225]
-        )
-    )
-
-    extractor = [utils.Extract(extraction=extraction,
+    extractor = [utils.Extract(extraction=extraction, num_features=num_features,
                                num_patches=num_patches)] * max_tensor_size
 
     counter = Counter()
@@ -110,16 +96,20 @@ def test(num_features, threshold, extraction, num_patches):
                 idx_tensor = 0
                 hit_rate = Counter()
                 for j in range(len(mosaic)):
-                    #add rotations of input image
                     img = transforms.Resize((224, 224))(mosaic[j])
-                    tensor_cpu[idx_tensor] = transforms.ToTensor()(img)
+                    img = transforms.ToTensor()(img)
+                    tensor_cpu[idx_tensor] = transforms.Normalize(
+                                mean=[0.485, 0.456, 0.406],
+                                std=[0.229, 0.224, 0.225]
+                            )(img)
                     idx_tensor += 1
 
                     if idx_tensor == max_tensor_size:
-                        tensor_gpu = transform(tensor_cpu.to(device='cuda:0'))
-                        out = model(tensor_gpu)
+                        tensor_gpu = tensor_cpu.to(device='cuda:0')
+                        with torch.no_grad():
+                            out = model(tensor_gpu).cpu()
                         for k in range(max_tensor_size):
-                            names = r.lrange(np.array2string(out[k]), 0, -1)
+                            names = r.lrange(np.array2string(utils.binarize(out[k].numpy(), threshold)), 0, -1)
                             hit = {}
                             for l in range(len(names)):
                                 js = json.loads(names[l].decode("utf-8"))
@@ -130,10 +120,11 @@ def test(num_features, threshold, extraction, num_patches):
                         idx_tensor = 0
 
                 if idx_tensor != 0:
-                    tensor_gpu = transform(tensor_cpu.to(device='cuda:0'))
-                    out = model(tensor_gpu)
+                    tensor_gpu = tensor_cpu.to(device='cuda:0')
+                    with torch.no_grad():
+                        out = model(tensor_gpu).cpu()
                     for j in range(idx_tensor):
-                        names = r.lrange(np.array2string(out[j]), 0, -1)
+                        names = r.lrange(np.array2string(utils.binarize(out[j].numpy(), threshold)), 0, -1)
                         hit = {}
                         for k in range(len(names)):
                             js = json.loads(names[k].decode("utf-8"))
@@ -182,6 +173,10 @@ if __name__ == "__main__":
     parser = ArgumentParser()
 
     parser.add_argument(
+        '--path'
+    )
+
+    parser.add_argument(
         '--num_features',
         help='number of features to extract',
         default=32,
@@ -208,6 +203,11 @@ if __name__ == "__main__":
         type=int
     )
 
+    parser.add_argument(
+        '--weights',
+        help='file containing the weights of the model'
+    )
+
     args = parser.parse_args()
 
-    test(args.num_features, args.threshold, args.extraction, args.num_patches)
+    test(args.path, args.num_features, args.threshold, args.extraction, args.num_patches, args.weights)

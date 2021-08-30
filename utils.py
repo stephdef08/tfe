@@ -6,20 +6,19 @@ import time
 import sys
 import torch
 from joblib import Parallel, delayed
+from sklearn.cluster import KMeans
 
-#Replace with something more efficient
 def binarize(tensor, threshold):
-    binary_rep = np.zeros((tensor.shape[0], tensor.shape[1]))
+    binary_rep = np.zeros(tensor.shape)
     binary_rep[tensor > threshold] = 1
     binary_rep[tensor <= threshold] = 0
     return binary_rep
 
 class Extract:
-    def __init__(self, extraction="kmeans", num_patches=0):
-        self.hist_list = np.zeros((64, 256), dtype=np.int32)
-        self.hist_list_gpu = cv2.cuda_GpuMat(64, 256, 4)
-        self.img_gpu = cv2.cuda_GpuMat(1024, 1024, 16)
+    def __init__(self, extraction="kmeans", num_features=32, num_patches=0):
         self.extraction = extraction
+        self.num_patches = num_patches
+        self.num_features = num_features
         self.num_patches = num_patches
 
     def extract_patches(self, img):
@@ -30,8 +29,8 @@ class Extract:
             positions = []
 
             for s in sizes:
-                positions.append(np.random.randint(0, 224 - s))
-                positions.append(np.random.randint(0, 224 - s))
+                positions.append(np.random.randint(0, 223 - s))
+                positions.append(np.random.randint(0, 223 - s))
 
             positions = np.array(positions).reshape((self.num_patches, 2))
 
@@ -58,40 +57,39 @@ class Extract:
             for i in range(8):
                 patch_thresh = img_grey[j*224:(j+1)*224, i*224:(i+1)*224]
                 if patch_thresh.sum() < threshold:
-                    patch_list.append(j * 10 + i)
+                    patch_list.append((j, i))
+
+        histograms = np.zeros((64, 256))
+
 
         mosaic = []
 
         if len(patch_list) >= 8:
             if self.extraction == 'kmeans':
-                self.img_gpu.upload(img)
-                cv2.cuda.computeHistograms(self.img_gpu, self.hist_list_gpu,
-                                           patch_list, 8, 8)
+                for k, (j, i) in enumerate(patch_list):
+                    planes = cv2.split(img[j*224:(j+1)*224, i*224:(i+1)*224])
+                    for c in range(3):
+                        hist = cv2.calcHist(planes[c], [0], None, [256], [0,256])
+                        histograms[k, :] += hist[:, 0]
 
-                self.hist_list = self.hist_list_gpu.download()
-
-                centroids, assignements = KMeansRex.RunKMeans(self.hist_list[:len(patch_list)].astype(np.float64),
-                                                              8)
-                assignements = np.array(assignements, dtype=np.int32).reshape(len(patch_list))
+                kmeans = KMeans(n_clusters=8).fit(histograms[:len(patch_list)])
 
                 label_list = [[] for i in range(8)]
                 label_list_indices = [[] for i in range(8)]
 
                 for i, idx in enumerate(patch_list):
-                        label_list[assignements[i]].append(self.hist_list[i])
-                        label_list_indices[assignements[i]].append(idx)
+                    label_list[kmeans.labels_[i]].append(histograms[i])
+                    label_list_indices[kmeans.labels_[i]].append(idx)
 
                 for i in range(8):
                     nbr_clusters = int(.25 * len(label_list[i]) + .5) if len(label_list[i]) > 0 else 0
 
                     if nbr_clusters > 1:
-                        centroids, assignements = KMeansRex.RunKMeans(np.array(label_list[i],
-                                                                               dtype=np.float64),
-                                                                      nbr_clusters)
-                        indices = [x for x in range(nbr_clusters)]
-                        for j in range(len(assignements)):
-                            if assignements[j] in indices:
-                                indices.remove(assignements[j])
+                        kmeans = KMeans(n_clusters=nbr_clusters).fit(label_list[i])
+                        indices = set(range(nbr_clusters))
+                        for j in range(len(kmeans.labels_)):
+                            if kmeans.labels_[j] in indices:
+                                indices.remove(kmeans.labels_[j])
                                 mosaic.append(label_list_indices[i][j])
                     else:
                         for j in range(len(label_list_indices[i])):
@@ -103,8 +101,7 @@ class Extract:
                 mosaic.append(idx)
 
         for i in range(len(mosaic)):
-            y = mosaic[i] // 10
-            x = mosaic[i] % 10
+            y, x = mosaic[i]
 
             mosaic[i] = img[y * 224 : (y+1) * 224, x * 224 : (x+1) * 224, :]
             mosaic[i] = Image.fromarray(mosaic[i])

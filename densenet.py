@@ -14,7 +14,7 @@ from argparse import ArgumentParser, ArgumentTypeError
 
 
 class Model(nn.Module):
-    def __init__(self, eval=True, batch_size=32, num_features=128, threshold=.5):
+    def __init__(self, eval=True, batch_size=128, num_features=128, threshold=.5, weights='weights'):
         super(Model, self).__init__()
         self.conv_net = models.densenet121(pretrained=True).cuda()
 
@@ -36,8 +36,10 @@ class Model(nn.Module):
 
         self.num_features = num_features
 
+        self.weights = weights
+
         if eval == True:
-            self.load_state_dict(torch.load("model" + str(num_features) + "_crop"))
+            self.load_state_dict(torch.load(self.weights))
             self.eval()
             self.eval = True
         else:
@@ -47,39 +49,20 @@ class Model(nn.Module):
 
     def forward(self, input):
         norm = nn.functional.normalize
-        if self.eval is True:
-            with torch.no_grad():
-                tensor1 = self.conv_net(input)
-                tensor1 = norm(self.relu(tensor1))
+        tensor1 = self.conv_net(input)
+        tensor1 = norm(self.relu(tensor1))
 
-                tensor2 = self.first_conv1(input)
-                tensor2 = self.first_conv2(tensor2)
-                tensor2 = torch.flatten(tensor2, start_dim=1)
+        tensor2 = self.first_conv1(input)
+        tensor2 = self.first_conv2(tensor2)
+        tensor2 = norm(torch.flatten(tensor2, start_dim=1))
 
-                tensor3 = self.second_conv1(input)
-                tensor3 = self.second_conv2(tensor3)
-                tensor3 = torch.flatten(tensor3, start_dim=1)
+        tensor3 = self.second_conv1(input)
+        tensor3 = self.second_conv2(tensor3)
+        tensor3 = norm(torch.flatten(tensor3, start_dim=1))
 
-                tensor4 = norm(torch.cat((tensor2, tensor3), 1))
+        tensor4 = norm(torch.cat((tensor2, tensor3), 1))
 
-                ret = self.linear(torch.cat((tensor1, tensor4), 1)).to(device='cpu')
-
-                return ret
-        else:
-            tensor1 = self.conv_net(input)
-            tensor1 = norm(self.relu(tensor1))
-
-            tensor2 = self.first_conv1(input)
-            tensor2 = self.first_conv2(tensor2)
-            tensor2 = norm(torch.flatten(tensor2, start_dim=1))
-
-            tensor3 = self.second_conv1(input)
-            tensor3 = self.second_conv2(tensor3)
-            tensor3 = norm(torch.flatten(tensor3, start_dim=1))
-
-            tensor4 = norm(torch.cat((tensor2, tensor3), 1))
-
-            return self.linear(torch.cat((tensor1, tensor4), 1))
+        return norm(self.relu(self.linear(torch.cat((tensor1, tensor4), 1))))
 
     def train_epochs(self, dir, epochs):
         lr = 0.01
@@ -88,7 +71,7 @@ class Model(nn.Module):
 
         data = dataset.DRDataset(root=dir)
         loader = torch.utils.data.DataLoader(data, batch_size=self.batch_size,
-                                             shuffle=True, num_workers=4,
+                                             shuffle=True, num_workers=12,
                                              pin_memory=True)
 
         loss_function = torch.nn.TripletMarginLoss()
@@ -119,11 +102,10 @@ class Model(nn.Module):
 
                     loss_list.append(loss.item())
 
-                    if i % 100 == 0:
-                        print("epoch {}, batch {}, loss = {}".format(epoch, i,
-                                                                     np.mean(loss_list)))
-                        loss_list.clear()
 
+                print("epoch {}, batch {}, loss = {}".format(epoch, i,
+                                                             np.mean(loss_list)))
+                loss_list.clear()
                 print("time for epoch {}".format(time.time()- start_time))
 
                 if (epoch + 1) % 4:
@@ -131,7 +113,7 @@ class Model(nn.Module):
                     for param in optimizer.param_groups:
                         param['lr'] = lr
 
-                torch.save(self.state_dict(), 'model' + str(self.num_features) + "_crop")
+                torch.save(self.state_dict(), self.weights)
 
         except KeyboardInterrupt:
             print("Interrupted")
@@ -142,10 +124,21 @@ if __name__ == "__main__":
     parser.add_argument(
         '--num_features',
         type=int,
-        help='number of features to use',
+        help='Size of the last linear layer',
+        default=32
+    )
+
+    parser.add_argument(
+        '--weights',
+        help='File containing the weights of the model'
+    )
+
+    parser.add_argument(
+        '--path',
+        help='Training images'
     )
 
     args = parser.parse_args()
 
     m = Model(False, num_features=args.num_features)
-    m.train_epochs("tmp/", 5)
+    m.train_epochs(args.path, 5)

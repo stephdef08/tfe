@@ -20,21 +20,26 @@ def extract_patches(subdir, file, extractor):
     return (mosaic, os.path.join(subdir, file))
 
 @torch.no_grad()
-def add_redis(tensor_cpu, tensor_gpu, model, i, r, results, name_list, max_tensor_size, transform):
+def add_redis(tensor_cpu, tensor_gpu, model, i, r, results, name_list, max_tensor_size, threshold):
     for res in results:
         mosaic, name = res
         counter = Counter()
         for j in range(len(mosaic)):
             name_list.append((name, 1 / len(mosaic)))
             img = transforms.Resize((224, 224))(mosaic[j])
-            tensor_cpu[i] = transforms.ToTensor()(img)
+            img = transforms.ToTensor()(img)
+            tensor_cpu[i] = transforms.Normalize(
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225]
+            )(img)
             i += 1
 
             if i == max_tensor_size:
-                tensor_gpu = transform(tensor_cpu.to(device='cuda:0'))
-                out = model(tensor_gpu)
+                tensor_gpu = tensor_cpu.to(device='cuda:0')
+                with torch.no_grad():
+                    out = model(tensor_gpu).cpu()
                 for k in range(max_tensor_size):
-                    r.lpush(np.array2string(out[k]),
+                    r.lpush(np.array2string(utils.binarize(out[k].numpy(), threshold)),
                             json.dumps({"name": name_list[k][0],
                                         "value": name_list[k][1]}))
                 name_list.clear()
@@ -42,9 +47,7 @@ def add_redis(tensor_cpu, tensor_gpu, model, i, r, results, name_list, max_tenso
     return i
 
 if __name__ == "__main__":
-    usage = "python3 add_images.py --path <folder> [--extractor <algorithm>]"
-
-    parser = ArgumentParser(usage)
+    parser = ArgumentParser()
 
     parser.add_argument(
         '--path',
@@ -84,13 +87,18 @@ if __name__ == "__main__":
         type=int
     )
 
+    parser.add_argument(
+        '--weights',
+        help='file storing the weights of the model'
+    )
+
     args = parser.parse_args()
 
     if args.path is None:
         print(usage)
         exit()
 
-    if args.path[-1] != '/':
+    if not os.path.isdir(args.path):
         print("The path mentionned is not a folder")
         exit()
 
@@ -98,20 +106,13 @@ if __name__ == "__main__":
 
     if args.extractor == 'densenet':
         model = densenet.Model(num_features=args.num_features,
-                               threshold=args.threshold)
+                               threshold=args.threshold, weights=args.weights)
 
     if model is None:
         print("Unkown feature extractor")
         exit()
 
     r = redis.Redis(host='localhost', port='6379', db=0)
-
-    transform = torch.nn.Sequential(
-        transforms.Normalize(
-            mean=[0.485, 0.456, 0.406],
-            std=[0.229, 0.224, 0.225]
-        )
-    )
 
     max_tensor_size = 32
 
@@ -120,7 +121,7 @@ if __name__ == "__main__":
     name_list = []
     counter = 0
 
-    extractor = [utils.Extract(extraction=args.extraction,
+    extractor = [utils.Extract(extraction=args.extraction, num_features=args.num_features,
                                num_patches=args.num_patches)] * max_tensor_size
 
     num_cores = multiprocessing.cpu_count()
@@ -133,7 +134,7 @@ if __name__ == "__main__":
                 result = parallel(delayed(extract_patches)(s, f, e)
                                   for s, f, e in zip(sub, files[max_tensor_size * i: max_tensor_size * (i+1)], extractor))
                 counter = add_redis(tensor_cpu, tensor_gpu, model, counter, r,
-                                    result, name_list, max_tensor_size, transform)
+                                    result, name_list, max_tensor_size, args.threshold)
 
             rest = len(files) % max_tensor_size
 
@@ -142,12 +143,13 @@ if __name__ == "__main__":
                 result = parallel(delayed(extract_patches)(s, f, e)
                                   for s, f, e in zip(sub, files[max_tensor_size * nbr_iter:], extractor[:rest+1]))
                 counter = add_redis(tensor_cpu, tensor_gpu, model, counter, r,
-                                    result, name_list, max_tensor_size, transform)
+                                    result, name_list, max_tensor_size, args.threshold)
 
         if counter != 0:
-            tensor_gpu = transform(tensor_cpu).to(device='cuda:0')
-            out = model(tensor_gpu)
+            tensor_gpu = tensor_cpu.to(device='cuda:0')
+            with torch.no_grad():
+                out = model(tensor_gpu).cpu()
             for j in range(counter):
-                r.lpush(np.array2string(out[j]),
+                r.lpush(np.array2string(utils.binarize(out[j].numpy(), args.threshold)),
                         json.dumps({"name": name_list[j][0],
                                     "value": name_list[j][1]}))
